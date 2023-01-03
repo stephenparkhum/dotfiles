@@ -114,6 +114,9 @@ Plug 'maxmellon/vim-jsx-pretty' "JS and JSX syntax
 Plug 'jparise/vim-graphql' "GraphQL syntax
 Plug 'mattn/emmet-vim'
 
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 call plug#end()
 
 "key combos
@@ -303,4 +306,3 @@ nnoremap <C-_> <cmd>lua require("spdev").curr_buf() <cr>
 nnoremap <C-_> :Telescope current_buffer_fuzzy_find sorting_strategy=ascending prompt_position=top <cr> 
 nnoremap <C-_> <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({sorting_strategy="ascending", prompt_position="top"})<cr>
 nnoremap <F4> :lua package.loaded.spdev = nil <cr>:source ~/.config/nvim/init.vim <cr> 
-" nnoremap <leader>sf :Telescope find_files cwd=~/Documents/Hobbies<cr>
