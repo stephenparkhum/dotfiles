@@ -1,6 +1,6 @@
 -- == GENERAL NEOVIM == --
 vim.keymap.set("n", "<leader>so", "<cmd>:so<CR>")
-vim.keymap.set("n", "jk", "<ESC>")
+-- vim.keymap.set("n", "jk", "<ESC>")
 
 -- == GENERAL MOVES == --
 vim.keymap.set("n", "J", "5j")
