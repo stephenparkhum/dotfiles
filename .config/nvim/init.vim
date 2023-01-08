@@ -85,6 +85,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "------------------------ VIM TSX ------------------------
 " by default, if you open tsx file, neovim does not show syntax colors
 Plug 'ianks/vim-tsx'
+Plug 'windwp/nvim-ts-autotag'
+Plug 'windwp/nvim-autopairs'
 
 "Telescope Requirements
 Plug 'nvim-lua/popup.nvim'
