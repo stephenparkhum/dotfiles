@@ -1,28 +1,20 @@
-"=================================================================================
-"general
-"=================================================================================
-
+"==================================================================================
+" General Options & Config
+"==================================================================================
 syntax on
-set ma
-set relativenumber
-set mouse=a
-set cursorline
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autoread
-set nobackup
-set nowritebackup
-set noswapfile
-set nu 
-set foldlevelstart=99
-set scrolloff=7
-set termguicolors
-set tw=64
+lua require("options") 
 
-"use y and p with the system clipboard
-set clipboard=unnamedplus
+"Telescope
+" will find .lua file that exist at runtime
+" should be unique
+lua require("spdev") 
+
+" Key mappings
+lua require("maps") 
+
+" Theme related
+lua require("theme") 
+
 
 "==================================================================================
 "plugins
@@ -125,7 +117,6 @@ call plug#end()
 "key combos
 "==============================================================================
 
-set encoding=UTF-8
 let mapleader = " "
 
 "Navigate buffers
@@ -263,7 +254,6 @@ let g:mkdp_filetypes = ['markdown']
 
 "normal/insert
 nnoremap <C-p> :MarkdownPreview
-
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
@@ -290,17 +280,6 @@ endif
 " Formatting selected code
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
-
-"Telescope
-" will find .lua file that exist at runtime
-" should be unique
-lua require("spdev") 
-
-" Key mappings
-lua require("maps") 
-
-" Theme related
-lua require("theme") 
 
 " LSP Config
 " lua require("lsp") 
