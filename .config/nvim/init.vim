@@ -4,18 +4,6 @@
 syntax on
 lua require("options") 
 
-"Telescope
-" will find .lua file that exist at runtime
-" should be unique
-lua require("spdev") 
-
-" Key mappings
-lua require("maps") 
-
-" Theme related
-lua require("theme") 
-
-
 "==================================================================================
 "plugins
 "==================================================================================
@@ -280,6 +268,17 @@ endif
 " Formatting selected code
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+"Telescope
+" will find .lua file that exist at runtime
+" should be unique
+lua require("spdev") 
+
+" Key mappings
+lua require("maps") 
+
+" Theme related
+lua require("theme") 
 
 " LSP Config
 " lua require("lsp") 
