@@ -4,6 +4,10 @@
 syntax on
 lua require("options") 
 
+" For some reason, this can't be set in the options.lua
+" I also have the number-toggle'r plugin
+set number
+
 "==================================================================================
 "plugins
 "==================================================================================
@@ -102,7 +106,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Vim Snippets 
 Plug 'phux/vim-snippets'
 
+" Number Stuff 
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
 call plug#end()
+
+lua require("nvim-autopairs").setup {}
 
 "key combos
 "==============================================================================
@@ -139,7 +148,6 @@ noremap fm <C-w>=
 
 " coc extensions
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
-
 
 " Buffer navigation
 " TODO

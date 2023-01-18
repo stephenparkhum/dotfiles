@@ -67,6 +67,9 @@ vim.opt.completeopt={"menu", "menuone", "noselect"} -- setting vim values
   -- Setup nvim-cmp.
   local cmp = require'cmp'
 
+  -- This next line brings in auto-pairs to the completion workflow
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -91,6 +94,11 @@ vim.opt.completeopt={"menu", "menuone", "noselect"} -- setting vim values
       { name = 'buffer' },
     })
   })
+
+  cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+  )
 
 -- Telescope Setup
 local action_state = require('telescope.actions.state') -- runtime (Plugin) exists somewhere as lua/telescope/actions/state.lua
