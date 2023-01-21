@@ -8,6 +8,8 @@ lua require("options")
 " I also have the number-toggle'r plugin
 set number
 
+let mapleader = " "
+
 "==================================================================================
 "plugins
 "==================================================================================
@@ -109,6 +111,13 @@ Plug 'phux/vim-snippets'
 " Number Stuff 
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Lightbulb in LSP Code action
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'antoinemadec/FixCursorHold.nvim'
+
+" Airline status bar
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
 lua require("nvim-autopairs").setup {}
@@ -116,18 +125,10 @@ lua require("nvim-autopairs").setup {}
 "key combos
 "==============================================================================
 
-let mapleader = " "
-
-"Navigate buffers
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bf :bfirst<CR>
-nnoremap <leader>bl :blast<CR>
-
 nnoremap ccd :CocList diagnostics<CR>
+
 "Other
-nnoremap <leader><CR> :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>ne :Telescope file_browser<CR>
+" nnoremap <leader><CR> :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>f :call CocAction('format')<CR>
 
 autocmd StdinReadPre * let s:std
