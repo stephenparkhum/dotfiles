@@ -16,18 +16,20 @@ let mapleader = " "
 
 call plug#begin('~/.config/nvim/autoload/')
 
-"Colour scheme
-" My fave colour schemes:
-" dracula/dracula-theme, rakr/vim-one, gosukiwi/vim-atom-dark,
-" phanviet/vim-monokai-pro rhysd/vim-color-spring-night arzg/vim-colors-xcode kyoz/purify 'jonathanfilip/vim-lucius'
+"Color scheme
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
+" BufferLine updates
+Plug 'nvim-tree/nvim-web-devicons' " Recommended (for colored icons)
+" Plug 'ryanoasis/vim-devicons' Icons without colors
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
 "Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "Markdown preview
 Plug 'ellisonleao/glow.nvim'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " React Snippet
 Plug 'mlaursen/vim-react-snippets'
@@ -98,17 +100,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'pangloss/vim-javascript' "JS support
 Plug 'leafgarland/typescript-vim' "TS support
 Plug 'maxmellon/vim-jsx-pretty' "JS and JSX syntax
-Plug 'jparise/vim-graphql' "GraphQL syntax
 Plug 'mattn/emmet-vim'
-
-" If you have nodejs and yarn
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Vim Snippets 
 Plug 'phux/vim-snippets'
 
-" Number Stuff 
+" Number Toggle -- toggles relative numbers on and off
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Lightbulb in LSP Code action
@@ -118,18 +115,19 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 " Airline status bar
 Plug 'vim-airline/vim-airline'
 
+" Smart Buffer
+Plug 'johann2357/nvim-smartbufs'
+
 call plug#end()
 
 lua require("nvim-autopairs").setup {}
 
+" Bufferline Setup
+lua require("bufferline").setup {}
+
 "key combos
 "==============================================================================
-
 nnoremap ccd :CocList diagnostics<CR>
-
-"Other
-" nnoremap <leader><CR> :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>f :call CocAction('format')<CR>
 
 autocmd StdinReadPre * let s:std
 "==============================================================================
@@ -152,7 +150,7 @@ let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet',
 
 " Buffer navigation
 " TODO
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
