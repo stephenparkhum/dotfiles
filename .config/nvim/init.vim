@@ -21,6 +21,7 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " BufferLine updates
 Plug 'nvim-tree/nvim-web-devicons' " Recommended (for colored icons)
+
 " Plug 'ryanoasis/vim-devicons' Icons without colors
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
@@ -148,8 +149,8 @@ noremap fm <C-w>=
 " coc extensions
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
 
-" Buffer navigation
-" TODO
+" Airline configs
+" You have to have this first line so that the buffer tabs work
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -292,6 +293,7 @@ lua require("maps")
 " Theme related
 lua require("theme") 
 
+" @TODO: Work on this eventually
 " LSP Config
 " lua require("lsp") 
 
