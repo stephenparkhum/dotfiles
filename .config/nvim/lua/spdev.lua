@@ -27,6 +27,20 @@ lspconfig.tsserver.setup{
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {buffer=0})
   end,
 } -- connect to server
+	
+lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
+})
 
 local configs = require 'lspconfig/configs'
 -- lualine
