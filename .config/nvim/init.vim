@@ -119,6 +119,9 @@ Plug 'vim-airline/vim-airline'
 " Smart Buffer
 Plug 'johann2357/nvim-smartbufs'
 
+" Rust Plugins
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 lua require("nvim-autopairs").setup {}
