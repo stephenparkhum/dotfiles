@@ -122,6 +122,9 @@ Plug 'johann2357/nvim-smartbufs'
 " Rust Plugins
 Plug 'rust-lang/rust.vim'
 
+" Git 
+Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 lua require("nvim-autopairs").setup {}
