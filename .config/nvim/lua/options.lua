@@ -21,3 +21,4 @@ set.termguicolors = true
 set.tw = 64
 
 -- use y and p with the system clipboard
+vim.cmd.colorscheme "catppuccin"

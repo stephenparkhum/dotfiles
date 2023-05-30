@@ -35,6 +35,12 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " React Snippet
 Plug 'mlaursen/vim-react-snippets'
 
+" NerdTree 
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 "Language packs
 Plug 'sheerun/vim-polyglot'
 
