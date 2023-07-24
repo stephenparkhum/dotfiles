@@ -1,5 +1,8 @@
 {
   "coc.preferences.formatOnSave": [
+	  "json", 
+	  "css", 
+	  "scss",
     "typescript",
     "typescriptreact",
     "javascript",
