@@ -1,6 +1,6 @@
 require("options")
 require("lazy").setup()
-require("lazy-config")
+require("after.lazy-config")
 
 -- Custom Setups
 require("maps")

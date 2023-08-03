@@ -6,10 +6,54 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      -- load the colorscheme here
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
+  -- Nvim Tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    version = "*",
+    config = function()
+      require("nvim-tree").setup({
+        actions = {
+          open_file = {
+            quit_on_open = true
+          }
+        }
+      })
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    dependencies = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' }, -- Required
+      {                            -- Optional
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
+      { "rafamadriz/friendly-snippets" },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'saadparwaiz1/cmp_luasnip' },
+    }
+  },
+  -- Dev icons
+  { 'nvim-tree/nvim-web-devicons' },
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
@@ -19,6 +63,7 @@ return {
     lazy = true,
     event = "VeryLazy"
   },
+  'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
   'nvim-telescope/telescope-ui-select.nvim',
   'debugloop/telescope-undo.nvim',
@@ -38,7 +83,7 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    run = ":TSUpdate",
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -72,25 +117,10 @@ return {
       })
     end
   },
-  -- Nerd Tree
-  { 'preservim/nerdtree' },
-  { 'Xuyuanp/nerdtree-git-plugin' },
-  -- Dev icons
-  { 'ryanoasis/vim-devicons' },
-  { 'nvim-tree/nvim-web-devicons' },
-  { 'tiagofumo/vim-nerdtree-syntax-highlight' },
   { 'nvim-treesitter/nvim-treesitter' },
-  -- Markdown Preview
-  {
-    "iamcco/markdown-preview.nvim",
-    build = "cd app && npm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end
-  },
-  { 'ellisonleao/glow.nvim' },
-  { 'akinsho/bufferline.nvim',   version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
-  { 'NvChad/nvim-colorizer.lua', ft = { "css" } },
+  { 'github/copilot.vim' },
+  { 'akinsho/bufferline.nvim',        version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'NvChad/nvim-colorizer.lua',      ft = { "css" } },
   -- LSP Autocomplete
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-buffer' },
@@ -105,9 +135,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
     },
-    config = function()
-      -- ...
-    end,
   },
   {
     "folke/which-key.nvim",
@@ -132,7 +159,7 @@ return {
   -- Telescope
   -- Telescope fzf
   { 'nvim-telescope/telescope-project.nvim' },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
@@ -146,11 +173,6 @@ return {
   },
   { 'jose-elias-alvarez/null-ls.nvim' },
   { 'MunifTanjim/eslint.nvim' },
-  -- Debugging
-  { 'mfussenegger/nvim-dap' },
-  { 'rcarriga/nvim-dap-ui' },
-  { 'theHamsta/nvim-dap-virtual-text' },
-  { 'nvim-telescope/telescope-dap.nvim' },
   -- Grammar checking because I can't english
   { 'rhysd/vim-grammarous' },
   -- TODO Comments Highlighting
@@ -159,10 +181,9 @@ return {
   -- by default, if you open tsx file, neovim does not show syntax colors
   { 'ianks/vim-tsx' },
   {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
   },
   -- Fullstack Web Dev
   { 'pangloss/vim-javascript' },
@@ -186,39 +207,11 @@ return {
   { 'rust-lang/rust.vim' },
   'nathom/tmux.nvim',
   --Git
-  {
-    'glepnir/dashboard-nvim',
-    event = 'VimEnter',
-    config = function()
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-  },
-
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      {
-        "rcarriga/nvim-dap-ui",
-        config = function(_, opts)
-          local dap = require("dap")
-          local dapui = require("dapui")
-          dapui.setup(opts)
-          dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open({})
-          end
-          dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close({})
-          end
-          dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close({})
-          end
-        end,
-      },
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        opts = {},
-      },
-      { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-    },
-  },
+  -- {
+  --   'glepnir/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --   end,
+  --   dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+  -- },
 }
