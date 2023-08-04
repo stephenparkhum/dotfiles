@@ -1,6 +1,6 @@
-local set = vim.opt
+local set_local = vim.opt
 local set_global = vim.g
-set.encoding = "utf-8"
+set_local.encoding = "utf-8"
 
 -- use space as a the leader key
 set_global.mapleader = ' '
@@ -27,7 +27,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-set.rtp:prepend(lazypath)
+set_local.rtp:prepend(lazypath)
 
 require("lazy").setup(plugs, {
   defaults = { lazy = false, version = false },

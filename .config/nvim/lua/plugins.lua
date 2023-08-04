@@ -27,29 +27,37 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
   },
+  -- LSP Autocomplete
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  {
+    "hrsh7th/nvim-cmp",
+    -- load cmp on InsertEnter
+    event = "InsertEnter",
+    -- these dependencies will only be loaded when cmp loads
+    -- dependencies are always lazy-loaded unless specified otherwise
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+    },
+  },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     dependencies = {
       -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      {                            -- Optional
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },     -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' },     -- Required
-      { "rafamadriz/friendly-snippets" },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'saadparwaiz1/cmp_luasnip' },
+      'neovim/nvim-lspconfig',              -- Required
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',  -- Optional
+      'hrsh7th/nvim-cmp',                   -- Required
+      'hrsh7th/cmp-nvim-lsp',               -- Required
+      'L3MON4D3/LuaSnip',                   -- Required
+      "rafamadriz/friendly-snippets",
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'saadparwaiz1/cmp_luasnip',
     }
   },
   -- Dev icons
@@ -58,7 +66,7 @@ return {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
-      require('nvim-ts-autotag').setup({})
+      require('nvim-ts-autotag').setup()
     end,
     lazy = true,
     event = "VeryLazy"
@@ -87,26 +95,20 @@ return {
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
+        modules = {},
+        auto_install = true,
+        ignore_install = {},
         ensure_installed = {
           "javascript",
           "typescript",
-          "c",
           "lua",
           "vim",
           "vimdoc",
           "query",
-          "elixir",
-          "erlang",
-          "heex",
-          "eex",
-          "java",
-          "kotlin",
           "jq",
           "dockerfile",
           "json",
           "html",
-          "terraform",
-          "go",
           "tsx",
           "bash",
           "ruby",
@@ -120,21 +122,11 @@ return {
   { 'nvim-treesitter/nvim-treesitter' },
   { 'github/copilot.vim' },
   { 'akinsho/bufferline.nvim',        version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
-  { 'NvChad/nvim-colorizer.lua',      ft = { "css" } },
-  -- LSP Autocomplete
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
   {
-    "hrsh7th/nvim-cmp",
-    -- load cmp on InsertEnter
-    event = "InsertEnter",
-    -- these dependencies will only be loaded when cmp loads
-    -- dependencies are always lazy-loaded unless specified otherwise
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-    },
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end
   },
   {
     "folke/which-key.nvim",
