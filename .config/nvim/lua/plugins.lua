@@ -47,12 +47,12 @@ return {
     branch = 'v2.x',
     dependencies = {
       -- LSP Support
-      'neovim/nvim-lspconfig',              -- Required
+      'neovim/nvim-lspconfig',             -- Required
       'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',  -- Optional
-      'hrsh7th/nvim-cmp',                   -- Required
-      'hrsh7th/cmp-nvim-lsp',               -- Required
-      'L3MON4D3/LuaSnip',                   -- Required
+      'williamboman/mason-lspconfig.nvim', -- Optional
+      'hrsh7th/nvim-cmp',                  -- Required
+      'hrsh7th/cmp-nvim-lsp',              -- Required
+      'L3MON4D3/LuaSnip',                  -- Required
       "rafamadriz/friendly-snippets",
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
@@ -91,7 +91,7 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    build = ":TSUpdate",
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
@@ -149,9 +149,9 @@ return {
   { 'nvim-lua/popup.nvim' },
   { 'nvim-lua/plenary.nvim' },
   -- Telescope
-  -- Telescope fzf
   { 'nvim-telescope/telescope-project.nvim' },
-  { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+  -- Telescope fzf
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
