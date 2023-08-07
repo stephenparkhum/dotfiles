@@ -4,7 +4,7 @@ require("after.lazy-config")
 
 -- Custom Setups
 require("maps")
-require("lsp")
+require("lua.lsp-config")
 require("options")
 require("plugins")
 require("spdev")
