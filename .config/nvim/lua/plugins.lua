@@ -33,16 +33,13 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      require("nvim-tree").setup {
-        view = {},
-        actions = {
-          open_file = {
-            quit_on_open = true
-          }
+    opts = {
+      actions = {
+        open_file = {
+          quit_on_open = true
         }
       }
-    end,
+    },
   },
   -- LSP Autocomplete
   { 'hrsh7th/cmp-nvim-lsp' },
@@ -180,6 +177,8 @@ return {
   {
     'neovim/nvim-lspconfig',
   },
+  -- Git
+  { 'dinhhuy258/git.nvim' },
   { 'jose-elias-alvarez/null-ls.nvim' },
   { 'MunifTanjim/eslint.nvim' },
   -- Grammar checking because I can't english
