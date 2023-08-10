@@ -109,6 +109,9 @@ return {
             vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>")
         end
     },
+
+    -- Smart Comments
+    'tpope/vim-commentary',
     'kylechui/nvim-surround',
     {
         'tpope/vim-fugitive',
