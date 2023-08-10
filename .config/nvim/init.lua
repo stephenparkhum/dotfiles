@@ -3,6 +3,7 @@ local set_global = vim.g
 set_global.loaded_netrw = 1
 set_global.loaded_netrwPlugin = 1
 set_local.encoding = "utf-8"
+vim.scriptencoding = 'utf-8'
 
 -- use space as a the leader key
 set_global.mapleader = ' '
@@ -54,7 +55,7 @@ require("lazy").setup(plugs, {
 require("telescope-config")
 require("cmp-config")
 -- LSP config
-require("lsp-config")
+require("p-lsp-config")
 require("spdev")
 
 -- Nvim Tree customs - keep at the end
