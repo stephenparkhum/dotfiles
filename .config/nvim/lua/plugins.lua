@@ -42,22 +42,53 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     "p00f/nvim-ts-rainbow",
     "axelvc/template-string.nvim",
-    -- Nvim Tree
     {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         lazy = false,
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
         },
-        opts = {
-            actions = {
-                open_file = {
-                    quit_on_open = true
+        config = function()
+            require("neo-tree").setup({
+                close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+                popup_border_style = "rounded",
+                enable_git_status = true,
+                git_status = {
+                    window = {
+                        position = "float",
+                        mappings = {
+                            ["A"]  = "git_add_all",
+                            ["gu"] = "git_unstage_file",
+                            ["ga"] = "git_add_file",
+                            ["gr"] = "git_revert_file",
+                            ["gc"] = "git_commit",
+                            ["gp"] = "git_push",
+                            ["gg"] = "git_commit_and_push",
+                        }
+                    }
                 }
-            }
-        },
+            })
+        end
     },
+    -- Nvim Tree
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     version = "*",
+    --     lazy = false,
+    --     dependencies = {
+    --         "nvim-tree/nvim-web-devicons",
+    --     },
+    --     opts = {
+    --         actions = {
+    --             open_file = {
+    --                 quit_on_open = true
+    --             }
+    --         }
+    --     },
+    -- },
     -- LSP Autocomplete
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
