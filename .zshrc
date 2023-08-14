@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/sp_dev/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -191,26 +191,26 @@ alias c.='code .'
 
 # Extras 
 ## Glossolalia 
-alias gloss='cd /Users/sp_dev/Desktop/personal_dev/Glossolalia-Records-V2 && c.'
+alias gloss='cd $HOME/Desktop/personal_dev/Glossolalia-Records-V2 && c.'
 
 ## Maestus
-alias maes='cd /Users/sp_dev/Desktop/personal_dev/Maestus-2020 && vim .'
+alias maes='cd $HOME/Desktop/personal_dev/Maestus-2020 && vim .'
 
 ## Paraphilia
-alias para='cd /Users/sp_dev/Desktop/personal_dev/Paraphilia-2021 && vim .'
+alias para='cd $HOME/Desktop/personal_dev/Paraphilia-2021 && vim .'
 
 ## Label Search 
-alias labels='cd /Users/sp_dev/Desktop/personal_dev/label-search && vim .'
+alias labels='cd $HOME/Desktop/personal_dev/label-search && vim .'
 
 ## Python 
 alias python='python3'
 
 ## Google Project
-alias goog='cd /Users/sp_dev/Desktop/rocket_dev/google-comp-site';
+alias goog='cd $HOME/Desktop/rocket_dev/google-comp-site';
 
 ## Discord/Midjourney 
 function midrun () {
-    python -u "/Users/sp_dev/Desktop/personal_dev/midjourney-vote-system/main.py" $1 $2 $3
+    python -u "$HOME/Desktop/personal_dev/midjourney-vote-system/main.py" $1 $2 $3
 }
 
 ## HTB 
@@ -224,7 +224,7 @@ eval "$(tmuxifier init -)"
 
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
-alias config='/usr/bin/git --git-dir=/Users/sp_dev/.cfg/ --work-tree=/Users/sp_dev'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
@@ -232,7 +232,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export dojostart='az webapp start --name dojo-api-dev --resource-group dojo-dev-app;'
 
 # pnpm
-export PNPM_HOME="/Users/sp_dev/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
