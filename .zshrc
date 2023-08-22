@@ -106,12 +106,12 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-17.jdk
-export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
-export PATCH="/usr/libexec/"
-export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+# export JAVA_HOME=$(/usr/libexec/java_home)
+# export PATH=$JAVA_HOME/bin:$PATH
+# export PATCH="/usr/libexec/"
+# export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+# export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -187,35 +187,6 @@ function gpc () {
 ## VS Code 
 alias c.='code .'
 
-## CLIENTS 
-
-# Extras 
-## Glossolalia 
-alias gloss='cd $HOME/Desktop/personal_dev/Glossolalia-Records-V2 && c.'
-
-## Maestus
-alias maes='cd $HOME/Desktop/personal_dev/Maestus-2020 && vim .'
-
-## Paraphilia
-alias para='cd $HOME/Desktop/personal_dev/Paraphilia-2021 && vim .'
-
-## Label Search 
-alias labels='cd $HOME/Desktop/personal_dev/label-search && vim .'
-
-## Python 
-alias python='python3'
-
-## Google Project
-alias goog='cd $HOME/Desktop/rocket_dev/google-comp-site';
-
-## Discord/Midjourney 
-function midrun () {
-    python -u "$HOME/Desktop/personal_dev/midjourney-vote-system/main.py" $1 $2 $3
-}
-
-## HTB 
-alias htb='cd ~/HTB'
-
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
@@ -228,9 +199,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-## Azure Related stuff - Dojo mainly
-export dojostart='az webapp start --name dojo-api-dev --resource-group dojo-dev-app;'
-
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
@@ -238,3 +206,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+
+source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(tmuxifier init -)"
