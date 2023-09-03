@@ -22,7 +22,7 @@ return {
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "cssls", "tsserver", "tailwindcss", "emmet_language_server",
+        ensure_installed = { "cssls", "tsserver", "tailwindcss", "emmet_ls",
           "rust_analyzer", "lua_ls" }
       })
     end
@@ -99,15 +99,6 @@ return {
   },
   -- Dev icons
   { 'nvim-tree/nvim-web-devicons' },
-  {
-    "windwp/nvim-ts-autotag",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
-    lazy = true,
-    event = "VeryLazy"
-  },
   "nvim-treesitter/nvim-treesitter-context",
   "p00f/nvim-ts-rainbow",
   "axelvc/template-string.nvim",
@@ -135,37 +126,60 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      local configs = require("nvim-treesitter.configs")
-      configs.setup({
-        modules = {},
-        autotag = { enable = true },
-        auto_install = true,
-        ignore_install = {},
-        ensure_installed = {
-          "javascript",
-          "typescript",
-          "comment",
-          "lua",
-          "vim",
-          "vimdoc",
-          "query",
-          "dockerfile",
-          "json",
-          "html",
-          "tsx",
-          "yaml",
-          "bash",
-          "ruby",
-        },
-        sync_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      require('nvim-treesitter').setup(
+        {
+          ignore_install = {},
+          ensure_installed = {
+            "javascript",
+            "typescript",
+            "comment",
+            "lua",
+            "vim",
+            "vimdoc",
+            "query",
+            "dockerfile",
+            "json",
+            "html",
+            "tsx",
+            "yaml",
+            "bash",
+            "ruby",
+          },
+          sync_install = true,
+          highlight = {
+            enable = true,
+            use_languagetree = true,
+          },
+          indent = { enable = true },
+          modules = {},
+          autotag = {
+            enable = true,
+            filetypes = {
+              "javascript",
+              "typescript",
+              "tsx",
+              "html"
+            }
+          },
+          auto_install = true,
+
+
+
+        }
+      )
     end
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require('nvim-ts-autotag').setup({
+      })
+    end,
   },
   { 'github/copilot.vim' },
   { 'akinsho/bufferline.nvim',    version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
