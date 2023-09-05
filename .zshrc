@@ -187,6 +187,35 @@ function gpc () {
 ## VS Code 
 alias c.='code .'
 
+<<<<<<< HEAD
+=======
+## CLIENTS 
+
+# Extras 
+## Glossolalia 
+alias gloss='cd $HOME/Desktop/personal_dev/Glossolalia-Records-V2 && c.'
+
+## Maestus
+alias maes='cd $HOME/Desktop/personal_dev/Maestus-2020 && vim .'
+
+## Paraphilia
+alias para='cd $HOME/Desktop/personal_dev/Paraphilia-2021 && vim .'
+
+## Label Search 
+alias labels='cd $HOME/Desktop/personal_dev/label-search && vim .'
+
+## Python 
+alias python='python3'
+
+## Discord/Midjourney 
+function midrun () {
+    python -u "$HOME/Desktop/personal_dev/midjourney-vote-system/main.py" $1 $2 $3
+}
+
+## HTB 
+alias htb='cd ~/HTB'
+
+>>>>>>> 686270b80aabd0584d4a5a7e4dc72b3e8564cac4
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
@@ -205,6 +234,7 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
 # pnpm end
 #
 
