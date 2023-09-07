@@ -57,6 +57,9 @@ return {
           symbol = "[+]",
           highlight = "NeoTreeModified",
         },
+        window = {
+          width = 35
+        },
         git_status = {
           window = {
             position = "float",
@@ -74,6 +77,7 @@ return {
       })
     end
   },
+  { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-buffer' },
@@ -227,6 +231,9 @@ return {
   -- ESLINT LSP
   {
     'neovim/nvim-lspconfig',
+  },
+  {
+    'MunifTanjim/prettier.nvim'
   },
   -- Git
   { 'dinhhuy258/git.nvim' },

@@ -56,7 +56,11 @@ require("telescope-config")
 require("cmp-config")
 -- LSP config
 require("p-lsp-config")
-require("spdev")
+--require("spdev")
+--
+
+require("null-ls-config")
+require("prettier-config")
 
 -- Nvim Tree customs - keep at the end
 require("nvim-tree-config")
