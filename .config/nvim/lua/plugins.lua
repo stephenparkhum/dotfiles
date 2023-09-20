@@ -36,7 +36,16 @@ return {
     },
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {},
-    version = '^1.0.0',          -- optional: only update when a new 1.x version is released
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({})
+    end
   },
   "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   {
@@ -50,15 +59,19 @@ return {
     },
     config = function()
       require("neo-tree").setup({
-        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
         popup_border_style = "rounded",
         enable_git_status = true,
+        name = {
+          use_git_status_colors = true,
+          highlight = "NeoTreeFileName"
+        },
         modified = {
           symbol = "[+]",
           highlight = "NeoTreeModified",
         },
         window = {
-          width = 35
+          width = 34
         },
         git_status = {
           window = {
@@ -170,9 +183,6 @@ return {
             }
           },
           auto_install = true,
-
-
-
         }
       )
     end
@@ -189,7 +199,6 @@ return {
       })
     end,
   },
-  { 'github/copilot.vim' },
   { 'akinsho/bufferline.nvim',    version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'norcalli/nvim-colorizer.lua',

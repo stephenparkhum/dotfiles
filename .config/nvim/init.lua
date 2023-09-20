@@ -67,3 +67,6 @@ require("nvim-tree-config")
 
 -- Nvim Smart buffers custom - keep at the end
 require("nvim-smartbufs-config")
+
+-- Neotree Config
+require("neotree-config")

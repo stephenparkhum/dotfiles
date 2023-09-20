@@ -187,8 +187,6 @@ function gpc () {
 ## VS Code 
 alias c.='code .'
 
-<<<<<<< HEAD
-=======
 ## CLIENTS 
 
 # Extras 
@@ -215,7 +213,6 @@ function midrun () {
 ## HTB 
 alias htb='cd ~/HTB'
 
->>>>>>> 686270b80aabd0584d4a5a7e4dc72b3e8564cac4
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
