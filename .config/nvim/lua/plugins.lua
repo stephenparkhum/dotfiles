@@ -120,7 +120,6 @@ return {
   },
   -- Dev icons
   { 'nvim-tree/nvim-web-devicons' },
-  "nvim-treesitter/nvim-treesitter-context",
   "p00f/nvim-ts-rainbow",
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
