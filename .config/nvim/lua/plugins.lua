@@ -38,6 +38,7 @@ return {
     opts = {},
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
+  { 'junegunn/fzf.vim' },
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -90,6 +91,8 @@ return {
       })
     end
   },
+  -- FZF - Neovim Fzf
+  { 'vijaymarupudi/nvim-fzf' },
   { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
   { 'hrsh7th/cmp-nvim-lsp' },
