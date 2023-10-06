@@ -92,6 +92,8 @@ return {
     end
   },
   -- FZF - Neovim Fzf
+  'vijaymarupudi/nvim-fzf',
+  'vijaymarupudi/nvim-fzf-commands',
   { 'vijaymarupudi/nvim-fzf' },
   { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
@@ -144,6 +146,7 @@ return {
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     end
   },
+  { 'akinsho/git-conflict.nvim',  version = "*", config = true },
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -201,7 +204,7 @@ return {
       })
     end,
   },
-  { 'akinsho/bufferline.nvim',    version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim',                  version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()

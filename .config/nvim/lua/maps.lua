@@ -25,7 +25,7 @@ map.set("n", "<leader>bl", "<cmd>:blast<CR> ")
 -- == TELESCOPE NAV == --
 map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
 map.set("n", "<leader>pf", "<cmd>Telescope git_files<CR>")
-map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+map.set("n", "<leader>ff", "<cmd>lua require('fzf-commands').files()<CR>")
 map.set("n", "<leader>ne", "<cmd>Telescope file_browser<CR>")
 map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
 
