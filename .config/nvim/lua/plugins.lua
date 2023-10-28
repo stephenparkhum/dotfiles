@@ -94,7 +94,6 @@ return {
   -- FZF - Neovim Fzf
   'vijaymarupudi/nvim-fzf',
   'vijaymarupudi/nvim-fzf-commands',
-  { 'vijaymarupudi/nvim-fzf' },
   { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
   { 'hrsh7th/cmp-nvim-lsp' },

@@ -16,7 +16,7 @@ map.set("n", "<leader>t", "<cmd>:Neotree<CR>")
 map.set("n", "<leader>t", "<cmd>:Neotree<CR>")
 
 -- == BUFFER NAV == --
-map.set("n", "<leader>B", "<cmd>:bp<CR>")
+map.set("n", "<leader>b", "<cmd>:bp<CR>")
 map.set("n", "<leader>bn", "<cmd>:bnext<CR>")
 map.set("n", "<leader>bp", "<cmd>:bprevious<CR>")
 map.set("n", "<leader>bf", "<cmd>:bfirst<CR>")
@@ -25,9 +25,11 @@ map.set("n", "<leader>bl", "<cmd>:blast<CR> ")
 -- == TELESCOPE NAV == --
 map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
 map.set("n", "<leader>pf", "<cmd>Telescope git_files<CR>")
-map.set("n", "<leader>ff", "<cmd>lua require('fzf-commands').files()<CR>")
 map.set("n", "<leader>ne", "<cmd>Telescope file_browser<CR>")
 map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
+
+-- == FZF NAV == --
+map.set("n", "<leader>ff", "<cmd>lua require('fzf-commands').files()<CR>") -- only using fzfvim
 
 -- == WINDOW MOVES == --
 map.set("n", "<leader>l", "<C-W>l")
