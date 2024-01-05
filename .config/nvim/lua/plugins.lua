@@ -29,26 +29,12 @@ return {
   },
   { 'merrickluo/lsp-tailwindcss' },
   {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-    init = function() vim.g.barbar_auto_setup = false end,
-    opts = {},
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
-  },
-  { 'junegunn/fzf.vim' },
-  {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    "startup-nvim/startup.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
+      require "startup".setup()
     end
   },
-  "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -57,6 +43,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     config = function()
       require("neo-tree").setup({
@@ -90,7 +77,29 @@ return {
         }
       })
     end
+
   },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {},
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+  { 'junegunn/fzf.vim' },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      -- calling `setup` is optional for customization
+      require("fzf-lua").setup({})
+    end
+  },
+  "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   -- FZF - Neovim Fzf
   'vijaymarupudi/nvim-fzf',
   'vijaymarupudi/nvim-fzf-commands',

@@ -57,7 +57,6 @@ require("cmp-config")
 -- LSP config
 require("p-lsp-config")
 --require("spdev")
---
 
 require("null-ls-config")
 require("prettier-config")
@@ -67,9 +66,3 @@ require("fzf-config")
 
 -- Nvim Smart buffers custom - keep at the end
 require("nvim-smartbufs-config")
-
--- Neotree Config
-require("neotree-config")
-
--- Nvim Tree customs - keep at the end
-require("nvim-tree-config")
