@@ -66,3 +66,6 @@ require("fzf-config")
 
 -- Nvim Smart buffers custom - keep at the end
 require("nvim-smartbufs-config")
+
+-- Harpoon
+require("harpoon-config")

@@ -176,6 +176,9 @@ alias vim='nvim '
 alias v.='nvim .'
 alias vcon='vim ~/.config/nvim'
 
+# Config Alias
+alias cs="config status"
+
 ## Git Aliases
 alias ga='git add .;'
 alias gs='git status;'

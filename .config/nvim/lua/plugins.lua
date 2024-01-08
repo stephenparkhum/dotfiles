@@ -17,14 +17,55 @@ return {
       require("mason").setup()
     end
   },
+  'voldikss/vim-floaterm',
+  'jinh0/eyeliner.nvim',
+  -- Rust
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
+    'pwntester/octo.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require("octo").setup({ enable_builtin = true })
+      vim.cmd([[hi OctoEditable guibg=none]])
+    end,
+    keys = {
+      { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
+    }
+  },
   {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "cssls", "tsserver", "tailwindcss", "emmet_ls",
-          "rust_analyzer", "lua_ls" }
+        ensure_installed = { "yamlls", "cssls", "tsserver", "eslint", "html", "jsonls", "tailwindcss", "emmet_ls",
+          "rust_analyzer", "lua_ls", "azure_pipelines_ls", "cssmodules_ls" }
       })
+    end
+  },
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
     end
   },
   { 'merrickluo/lsp-tailwindcss' },

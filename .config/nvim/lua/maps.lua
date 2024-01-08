@@ -12,15 +12,15 @@ map.set("v", "J", "5j")
 map.set("v", "K", "5k")
 
 -- == Neotree Nav == --
-map.set("n", "<leader>t", "<cmd>:Neotree<CR>")
-map.set("n", "<leader>t", "<cmd>:Neotree<CR>")
+map.set("n", "<leader>t", "<cmd>:Neotree toggle<CR>")
 
 -- == BUFFER NAV == --
 map.set("n", "<leader>b", "<cmd>:bp<CR>")
 map.set("n", "<leader>bn", "<cmd>:bnext<CR>")
 map.set("n", "<leader>bp", "<cmd>:bprevious<CR>")
 map.set("n", "<leader>bf", "<cmd>:bfirst<CR>")
-map.set("n", "<leader>bl", "<cmd>:blast<CR> ")
+map.set("n", "<leader>bl", "<cmd>:blast<CR>")
+map.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
 
 -- == TELESCOPE NAV == --
 map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
