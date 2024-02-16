@@ -24,14 +24,13 @@ map.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
 
 -- == TELESCOPE NAV == --
 map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
-map.set("n", "<leader>pf", "<cmd>Telescope git_files<CR>")
+map.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
+map.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
+map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
 map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
 
 -- This is broken for some reason
 map.set("n", "<leader>ne", "<cmd>Telescope file_browser<CR>")
-
--- == FZF NAV == --
-map.set("n", "<leader>ff", "<cmd>lua require('fzf-commands').files()<CR>") -- only using fzfvim
 
 -- == WINDOW MOVES == --
 map.set("n", "<leader>l", "<C-W>l")
@@ -42,6 +41,9 @@ map.set("n", "<leader>j", "<C-W>j")
 -- == CODE ACTIONS== --
 map.set("n", "<leader>f", "<cmd>:call CocAction('format')<CR>")
 map.set("n", "ccd", ":CocList diagnostics<CR>")
+
+-- == GIT == --
+map.set("n", "<leader>gb", "<cmd>:Git branch<CR>")
 
 -- This is broken for some reason
 map.set("n", "<leader>fp", "<cmd>Telescope project<CR>")

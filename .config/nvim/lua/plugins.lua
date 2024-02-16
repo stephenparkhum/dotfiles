@@ -55,19 +55,6 @@ return {
       })
     end
   },
-  {
-    "anuvyklack/windows.nvim",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim"
-    },
-    config = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
-      require('windows').setup()
-    end
-  },
   { 'merrickluo/lsp-tailwindcss' },
   {
     "startup-nvim/startup.nvim",
@@ -189,13 +176,15 @@ return {
   -- Smart Comments
   'tpope/vim-commentary',
   'kylechui/nvim-surround',
+  -- Git Plugins
   {
     'tpope/vim-fugitive',
     config = function()
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     end
   },
-  { 'akinsho/git-conflict.nvim',  version = "*", config = true },
+  'rhysd/conflict-marker.vim',
+  'https://gitlab.com/yorickpeterse/nvim-pqf',
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -253,7 +242,7 @@ return {
       })
     end,
   },
-  { 'akinsho/bufferline.nvim',                  version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim',    version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()

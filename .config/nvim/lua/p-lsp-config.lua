@@ -99,6 +99,12 @@ nvim_lsp.rust_analyzer.setup {
   },
 }
 
+nvim_lsp.eslint.setup({
+  settings = {
+    packageManager = "npm"
+  }
+})
+
 nvim_lsp.emmet_ls.setup({
   capabilities = capabilities,
   filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
