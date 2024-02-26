@@ -1,0 +1,13 @@
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[font]
+normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular"}
+size = 16
+
+[window]
+padding = {x = 8, y = 8}
+
+[selection]
+save_to_clipboard = true 
