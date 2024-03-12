@@ -3,6 +3,7 @@
 	  "json", 
 	  "css", 
 	  "scss",
+    "less",
     "typescript",
     "typescriptreact",
     "javascript",

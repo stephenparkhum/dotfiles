@@ -58,7 +58,7 @@ require("cmp-config")
 require("p-lsp-config")
 --require("spdev")
 
-require("null-ls-config")
+require("none-ls-config")
 require("prettier-config")
 
 -- Fzf Config

@@ -3,16 +3,6 @@ local map = vim.keymap
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
--- local eslint = {
---     lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
---     lintStdin = true,
---     lintFormats = { "%f:%l:%c: %m" },
---     lintIgnoreExitCode = true,
---     formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
---     formatStdin = true
--- }
-
-
 local on_attach = function(_, bfr)
   map.set('n', '<leader>rn', vim.lsp.buf.rename, {})
   map.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
@@ -93,9 +83,25 @@ nvim_lsp.tsserver.setup {
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
 }
 
+nvim_lsp.sourcekit.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "sourcekit-lsp" },
+  filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" }
+}
+
 nvim_lsp.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = nvim_lsp.util.root_pattern("Cargo.toml", "rust-project.json"),
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
   settings = {
-    ['rust-analyzer'] = {},
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      }
+    },
   },
 }
 
@@ -121,12 +127,11 @@ nvim_lsp.emmet_ls.setup({
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- setting vim values
 
 -- Global LSP mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-vim.keymap.set('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-vim.keymap.set('n', 'H', ':lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n', 'rn', ':lua vim.lsp.buf.rename()<CR>')
+map.set('n', '<leader>e', vim.diagnostic.open_float)
+map.set('n', '[d', vim.diagnostic.goto_prev)
+map.set('n', ']d', vim.diagnostic.goto_next)
+map.set('n', '<leader>q', vim.diagnostic.setloclist)
+map.set('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+map.set('n', 'H', ':lua vim.lsp.buf.hover()<CR>')
+map.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>')
+map.set('n', 'rn', ':lua vim.lsp.buf.rename()<CR>')

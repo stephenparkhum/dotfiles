@@ -1,7 +1,7 @@
 local map = vim.keymap
 -- == GENERAL NEOVIM == --
 map.set("n", "<leader>so", "<cmd>:so %<CR>")
-map.set("n", "<leader><CR>", "<cmd>:source ~/.config/nvim/init.vim<CR>")
+-- map.set("n", "<leader><CR>", "<cmd>:source ~/.config/nvim/init.lua<CR>")
 
 -- == GENERAL MOVES == --
 -- Exit insert mode without hitting Esc
@@ -27,10 +27,8 @@ map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
 map.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
 map.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
 map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+map.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>")
 map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
-
--- This is broken for some reason
-map.set("n", "<leader>ne", "<cmd>Telescope file_browser<CR>")
 
 -- == WINDOW MOVES == --
 map.set("n", "<leader>l", "<C-W>l")
@@ -46,4 +44,4 @@ map.set("n", "ccd", ":CocList diagnostics<CR>")
 map.set("n", "<leader>gb", "<cmd>:Git branch<CR>")
 
 -- This is broken for some reason
-map.set("n", "<leader>fp", "<cmd>Telescope project<CR>")
+-- map.set("n", "<leader>fp", "<cmd>Telescope project<CR>")

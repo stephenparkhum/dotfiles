@@ -17,34 +17,6 @@ return {
       require("mason").setup()
     end
   },
-  'voldikss/vim-floaterm',
-  'jinh0/eyeliner.nvim',
-  -- Rust
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
-    ft = { 'rust' },
-  },
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
-  {
-    'pwntester/octo.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require("octo").setup({ enable_builtin = true })
-      vim.cmd([[hi OctoEditable guibg=none]])
-    end,
-    keys = {
-      { "<leader>O", "<cmd>Octo<cr>", desc = "Octo" },
-    }
-  },
   {
     'williamboman/mason-lspconfig.nvim',
     lazy = false,
@@ -55,12 +27,27 @@ return {
       })
     end
   },
-  { 'merrickluo/lsp-tailwindcss' },
+  'voldikss/vim-floaterm',
+  'jinh0/eyeliner.nvim',
+  -- Rust
+  {
+    'mrcjkb/rustaceanvim',
+    lazy = true,
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
+  { 'rust-lang/rust.vim' },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  'merrickluo/lsp-tailwindcss',
   {
     "startup-nvim/startup.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
-      require "startup".setup()
+      require("startup").setup({ theme = "dashboard" }) -- put theme name here
     end
   },
   {
@@ -105,7 +92,6 @@ return {
         }
       })
     end
-
   },
   {
     'romgrk/barbar.nvim',
@@ -117,7 +103,6 @@ return {
     opts = {},
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
-  { 'junegunn/fzf.vim' },
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -129,13 +114,11 @@ return {
   },
   "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   -- FZF - Neovim Fzf
-  'vijaymarupudi/nvim-fzf',
-  'vijaymarupudi/nvim-fzf-commands',
+  -- 'vijaymarupudi/nvim-fzf',
+  -- 'vijaymarupudi/nvim-fzf-commands',
   { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
+  'hrsh7th/cmp-path',
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
@@ -160,7 +143,7 @@ return {
     }
   },
   -- Dev icons
-  { 'nvim-tree/nvim-web-devicons' },
+  'nvim-tree/nvim-web-devicons',
   "p00f/nvim-ts-rainbow",
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
@@ -242,7 +225,7 @@ return {
       })
     end,
   },
-  { 'akinsho/bufferline.nvim',    version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  { 'akinsho/bufferline.nvim',                  version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
@@ -263,14 +246,17 @@ return {
     'nvim-lualine/lualine.nvim',
     config = {
       options = {
-        theme = 'catppuccin'
+        theme = 'catppuccin',
+        sections = {
+          lualine_x = { 'fileformat', 'filetype' },
+        },
       }
     }
   },
-  { 'nvim-lua/popup.nvim' },
-  { 'nvim-lua/plenary.nvim' },
+  'nvim-lua/popup.nvim',
+  'nvim-lua/plenary.nvim',
   -- Telescope
-  { 'nvim-telescope/telescope-project.nvim' },
+  'nvim-telescope/telescope-project.nvim',
   -- Telescope fzf
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
@@ -283,17 +269,18 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
-
   -- ESLINT LSP
-  {
-    'neovim/nvim-lspconfig',
-  },
-  {
-    'MunifTanjim/prettier.nvim'
-  },
+  'neovim/nvim-lspconfig',
+  'MunifTanjim/prettier.nvim',
   -- Git
   { 'dinhhuy258/git.nvim' },
-  { 'jose-elias-alvarez/null-ls.nvim' },
+  {
+    "nvimtools/none-ls.nvim",
+    config = function()
+      require("null-ls").setup()
+    end,
+    requires = { "nvim-lua/plenary.nvim" }
+  },
   { 'MunifTanjim/eslint.nvim' },
   -- Grammar checking because I can't english
   { 'rhysd/vim-grammarous' },
@@ -314,28 +301,13 @@ return {
   { 'mattn/emmet-vim' },
   --Vim Snippets
   { 'phux/vim-snippets' },
-
   --Number Toggle -- toggles relative numbers on and off
   { 'jeffkreeftmeijer/vim-numbertoggle' },
-
   --Lightbulb in LSP Code action
   { 'kosayoda/nvim-lightbulb' },
   { 'antoinemadec/FixCursorHold.nvim' },
-  --Airline status bar
-  { 'vim-airline/vim-airline' },
   --Smart Buffer
   { 'johann2357/nvim-smartbufs' },
-  --Rust Plugins
-  { 'rust-lang/rust.vim' },
   'nathom/tmux.nvim',
-  --Git
-  -- {
-  --   'glepnir/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   config = function()
-  --   end,
-  --   dependencies = { { 'nvim-tree/nvim-web-devicons' } }
-  -- },
-  { 'jose-elias-alvarez/null-ls.nvim' },
   { 'MunifTanjim/prettier.nvim' },
 }
