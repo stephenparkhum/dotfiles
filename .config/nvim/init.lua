@@ -9,12 +9,10 @@ vim.scriptencoding = 'utf-8'
 set_global.mapleader = ' '
 set_global.maplocalleader = ' '
 
--- CUSTOM SETUPS --
+-- DEFAULT SETUPS --
 require("options")
 local plugs = require("plugins")
 require("maps")
--- require("theme")
-
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -52,20 +50,11 @@ require("lazy").setup(plugs, {
   },
 })
 
-require("telescope-config")
-require("cmp-config")
--- LSP config
-require("p-lsp-config")
---require("spdev")
-
-require("none-ls-config")
-require("prettier-config")
-
--- Fzf Config
-require("fzf-config")
-
--- Nvim Smart buffers custom - keep at the end
-require("nvim-smartbufs-config")
-
--- Harpoon
-require("harpoon-config")
+-- PLUGIN CONFIGS
+require("plugins.telescope")
+require("plugins.cmp")
+require("plugins.p-lsp")
+require("plugins.none-ls")
+require("plugins.prettier")
+require("plugins.nvim-smartbufs")
+require("plugins.harpoon")

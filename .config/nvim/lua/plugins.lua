@@ -9,6 +9,8 @@ return {
       vim.cmd([[colorscheme catppuccin]])
     end,
   },
+  -- Required by a lot of things
+  "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
   -- Mason
   {
     'williamboman/mason.nvim',
@@ -27,22 +29,29 @@ return {
       })
     end
   },
-  'voldikss/vim-floaterm',
-  'jinh0/eyeliner.nvim',
-  -- Rust
   {
-    'mrcjkb/rustaceanvim',
-    lazy = true,
-    version = '^3', -- Recommended
-    ft = { 'rust' },
+    'jinh0/eyeliner.nvim',
+    config = function()
+      require 'eyeliner'.setup {
+        dim = true,
+        highlight_on_key = true
+      }
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        pattern = '*',
+        callback = function()
+          vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
+        end,
+      })
+    end
   },
-  { 'rust-lang/rust.vim' },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
-  'merrickluo/lsp-tailwindcss',
+  {
+    'merrickluo/lsp-tailwindcss',
+  },
   {
     "startup-nvim/startup.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -103,20 +112,6 @@ return {
     opts = {},
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
-  {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
-    end
-  },
-  "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-  -- FZF - Neovim Fzf
-  -- 'vijaymarupudi/nvim-fzf',
-  -- 'vijaymarupudi/nvim-fzf-commands',
-  { 's1n7ax/nvim-window-picker' },
   -- LSP Autocomplete
   'hrsh7th/cmp-path',
   {
@@ -244,7 +239,7 @@ return {
   -- Buffer Navigation
   {
     'nvim-lualine/lualine.nvim',
-    config = {
+    opts = {
       options = {
         theme = 'catppuccin',
         sections = {
@@ -279,7 +274,7 @@ return {
     config = function()
       require("null-ls").setup()
     end,
-    requires = { "nvim-lua/plenary.nvim" }
+    dependencies = { "nvim-lua/plenary.nvim" }
   },
   { 'MunifTanjim/eslint.nvim' },
   -- Grammar checking because I can't english
@@ -310,4 +305,13 @@ return {
   { 'johann2357/nvim-smartbufs' },
   'nathom/tmux.nvim',
   { 'MunifTanjim/prettier.nvim' },
+
+  -- Rust
+  -- {
+  --   'mrcjkb/rustaceanvim',
+  --   lazy = true,
+  --   version = '^3', -- Recommended
+  --   ft = { 'rust' },
+  -- },
+  -- { 'rust-lang/rust.vim' },
 }
