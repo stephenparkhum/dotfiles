@@ -10,7 +10,10 @@ return {
     end,
   },
   -- Required by a lot of things
-  "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  {
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    after = "catppuccin/nvim",
+  },
   -- Mason
   {
     'williamboman/mason.nvim',
@@ -139,7 +142,6 @@ return {
   },
   -- Dev icons
   'nvim-tree/nvim-web-devicons',
-  "p00f/nvim-ts-rainbow",
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
@@ -161,7 +163,6 @@ return {
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     end
   },
-  'rhysd/conflict-marker.vim',
   'https://gitlab.com/yorickpeterse/nvim-pqf',
   -- Treesitter
   {
