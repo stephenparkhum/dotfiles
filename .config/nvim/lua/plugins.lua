@@ -272,9 +272,6 @@ return {
   { 'dinhhuy258/git.nvim' },
   {
     "nvimtools/none-ls.nvim",
-    config = function()
-      require("null-ls").setup()
-    end,
     dependencies = { "nvim-lua/plenary.nvim" }
   },
   { 'MunifTanjim/eslint.nvim' },
