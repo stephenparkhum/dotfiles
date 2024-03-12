@@ -3,6 +3,7 @@ local set_global = vim.g
 set_global.loaded_netrw = 1
 set_global.loaded_netrwPlugin = 1
 set_local.encoding = "utf-8"
+set_local.shell = "/bin/zsh"
 vim.scriptencoding = 'utf-8'
 
 -- use space as a the leader key

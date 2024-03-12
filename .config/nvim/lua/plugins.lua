@@ -86,7 +86,7 @@ return {
           highlight = "NeoTreeModified",
         },
         window = {
-          width = 34
+          width = 35
         },
         git_status = {
           window = {
@@ -300,8 +300,7 @@ return {
   --Number Toggle -- toggles relative numbers on and off
   { 'jeffkreeftmeijer/vim-numbertoggle' },
   --Lightbulb in LSP Code action
-  { 'kosayoda/nvim-lightbulb' },
-  { 'antoinemadec/FixCursorHold.nvim' },
+  -- { 'kosayoda/nvim-lightbulb' },
   --Smart Buffer
   { 'johann2357/nvim-smartbufs' },
   'nathom/tmux.nvim',
