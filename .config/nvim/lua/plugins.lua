@@ -6,7 +6,30 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme catppuccin]])
+      vim.cmd([[colorscheme catppuccin-macchiato]])
+      require("catppuccin").setup({
+        integrations = {
+          ts_rainbow = true,
+          ts_rainbow2 = true,
+          coc_nvim = true,
+          cmp = true,
+          dap = true,
+          gitsigns = true,
+          nvimtree = true,
+          mason = true,
+          harpoon = true,
+          treesitter = true,
+          telescope = {
+            enabled = true,
+            -- style = "nvchad"
+          },
+          notify = false,
+          mini = {
+            enabled = true,
+            indentscope_color = "",
+          },
+        }
+      })
     end,
   },
   -- Required by a lot of things
@@ -137,16 +160,15 @@ return {
       -- Autocompletion
       { "hrsh7th/nvim-cmp" },     -- Required
       { "hrsh7th/cmp-nvim-lsp" }, -- Required
-      { "L3MON4D3/LuaSnip" },     -- Required
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+      }, -- Required
     }
   },
-  -- Dev icons
-  'nvim-tree/nvim-web-devicons',
-  "axelvc/template-string.nvim",
-  'tiagovla/scope.nvim',
-  'airblade/vim-gitgutter',
-  'nvim-telescope/telescope-ui-select.nvim',
-  'debugloop/telescope-undo.nvim',
   {
     'mbbill/undotree',
     config = function()
@@ -168,30 +190,43 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     config = function()
       require('nvim-treesitter').setup(
         {
+          event = { "BufReadPre", "BufNewFile" },
           ignore_install = {},
           ensure_installed = {
+            "gitignore",
             "javascript",
             "typescript",
+            "tsx",
             "comment",
             "lua",
+            "css",
             "vim",
             "vimdoc",
-            "query",
             "dockerfile",
             "json",
             "html",
-            "tsx",
             "yaml",
             "bash",
-            "ruby",
           },
           sync_install = true,
           highlight = {
             enable = true,
             use_languagetree = true,
+          },
+          incremental_selection = {
+            enable = true,
+            keymaps = {
+              init_selection = "<C-space>",
+              node_incremental = "<C-space>",
+              scope_incremental = false,
+              node_decremental = "<bs>",
+            },
           },
           indent = { enable = true },
           modules = {},
@@ -270,6 +305,7 @@ return {
   'MunifTanjim/prettier.nvim',
   -- Git
   { 'dinhhuy258/git.nvim' },
+  { 'onsails/lspkind.nvim' },
   {
     "nvimtools/none-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim" }
@@ -289,9 +325,8 @@ return {
   },
   -- Fullstack Web Dev
   { 'pangloss/vim-javascript' },
-  { 'leafgarland/typescript-vim' },
-  { 'maxmellon/vim-jsx-pretty' },
   { 'mattn/emmet-vim' },
+  'leafgarland/typescript-vim',
   --Vim Snippets
   { 'phux/vim-snippets' },
   --Number Toggle -- toggles relative numbers on and off
@@ -302,13 +337,11 @@ return {
   { 'johann2357/nvim-smartbufs' },
   'nathom/tmux.nvim',
   { 'MunifTanjim/prettier.nvim' },
-
-  -- Rust
-  -- {
-  --   'mrcjkb/rustaceanvim',
-  --   lazy = true,
-  --   version = '^3', -- Recommended
-  --   ft = { 'rust' },
-  -- },
-  -- { 'rust-lang/rust.vim' },
+  -- Dev icons
+  'nvim-tree/nvim-web-devicons',
+  "axelvc/template-string.nvim",
+  'tiagovla/scope.nvim',
+  'airblade/vim-gitgutter',
+  'nvim-telescope/telescope-ui-select.nvim',
+  'debugloop/telescope-undo.nvim',
 }

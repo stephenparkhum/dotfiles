@@ -41,7 +41,4 @@ map.set("n", "<leader>f", "<cmd>:call CocAction('format')<CR>")
 map.set("n", "ccd", ":CocList diagnostics<CR>")
 
 -- == GIT == --
-map.set("n", "<leader>gb", "<cmd>:Git branch<CR>")
-
--- This is broken for some reason
--- map.set("n", "<leader>fp", "<cmd>Telescope project<CR>")
+-- map.set("n", "<leader>gb", "<cmd>:Git branch<CR>")
