@@ -10,6 +10,7 @@ return {
       require("catppuccin").setup({
         integrations = {
           ts_rainbow = true,
+          which_key = true,
           ts_rainbow2 = true,
           coc_nvim = true,
           cmp = true,
