@@ -22,7 +22,6 @@ return {
           treesitter = true,
           telescope = {
             enabled = true,
-            -- style = "nvchad"
           },
           notify = false,
           mini = {
@@ -35,7 +34,7 @@ return {
   },
   -- Required by a lot of things
   {
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "nvim-tree/nvim-web-devicons",
     after = "catppuccin/nvim",
   },
   -- Mason
@@ -147,27 +146,31 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",             -- source for file system paths in commands
+      "L3MON4D3/LuaSnip",             -- snippet engine
+      "saadparwaiz1/cmp_luasnip",     -- for lua autocompletion
+      "rafamadriz/friendly-snippets", -- useful snippet library
     },
   },
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" },             -- Required
       { "williamboman/mason.nvim" },           -- Optional
       { "williamboman/mason-lspconfig.nvim" }, -- Optional
-
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },     -- Required
-      { "hrsh7th/cmp-nvim-lsp" }, -- Required
+      { "hrsh7th/nvim-cmp" },                  -- Required
+      { "hrsh7th/cmp-nvim-lsp" },              -- Required
       {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
         version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
         -- install jsregexp (optional!).
         build = "make install_jsregexp"
-      }, -- Required
+      },
+      "sebkolind/luasnip-typescript",
     }
   },
   {
@@ -180,6 +183,20 @@ return {
   'tpope/vim-commentary',
   'kylechui/nvim-surround',
   -- Git Plugins
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
   {
     'tpope/vim-fugitive',
     config = function()
@@ -336,10 +353,7 @@ return {
   -- { 'kosayoda/nvim-lightbulb' },
   --Smart Buffer
   { 'johann2357/nvim-smartbufs' },
-  'nathom/tmux.nvim',
   { 'MunifTanjim/prettier.nvim' },
-  -- Dev icons
-  'nvim-tree/nvim-web-devicons',
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
