@@ -1,7 +1,6 @@
 local map = vim.keymap
 -- == GENERAL NEOVIM == --
 map.set("n", "<leader>so", "<cmd>:so %<CR>")
--- map.set("n", "<leader><CR>", "<cmd>:source ~/.config/nvim/init.lua<CR>")
 
 -- == GENERAL MOVES == --
 -- Exit insert mode without hitting Esc

@@ -65,7 +65,6 @@ require("lazy").setup(plugs, {
 require("plugins.telescope")
 require("plugins.cmp")
 require("plugins.p-lsp")
-require("plugins.null-ls")
 require("plugins.prettier")
 require("plugins.nvim-smartbufs")
 require("plugins.harpoon")

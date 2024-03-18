@@ -1,6 +1,7 @@
 local map = vim.keymap
 
 local lsp_zero = require('lsp-zero')
+local null_ls = require("null-ls")
 
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
@@ -22,6 +23,26 @@ local on_attach = function(_, bfr)
   map.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
   map.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
 end
+
+null_ls.setup({
+  on_attach = function(client, bufnr)
+    local augroup = vim.api.nvim_create_augroup('null_format', { clear = true })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = augroup,
+      buffer = bufnr,
+      desc = 'Fix and format',
+      callback = function()
+        vim.cmd('EslintFixAll')
+        vim.lsp.buf.format({ id = client.id })
+      end
+    })
+  end,
+  sources = {
+    null_ls.builtins.formatting.prettier.with({
+      prefer_local = 'node_modules/.bin',
+    })
+  }
+})
 
 -- Setup language servers.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -78,50 +99,9 @@ nvim_lsp.cssls.setup {
   capabilities = capabilities
 }
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    hostInfo = "neovim",
-    preferences = {
-      importModuleSpecifierPreference = 'project=relative',
-      jsxAttributeCompletionStyle = 'none'
-    }
-  },
-  cmd = { "typescript-language-server", "--stdio" },
-  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
-}
-
-nvim_lsp.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  root_dir = nvim_lsp.util.root_pattern("Cargo.toml", "rust-project.json"),
-  cmd = { "rust-analyzer" },
-  filetypes = { "rust" },
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = false,
-      }
-    },
-  },
-}
-
 nvim_lsp.eslint.setup({
   settings = {
     packageManager = "npm"
-  }
-})
-
-nvim_lsp.emmet_ls.setup({
-  capabilities = capabilities,
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
-  init_options = {
-    html = {
-      options = {
-        ["bem.enabled"] = true,
-      },
-    },
   }
 })
 
