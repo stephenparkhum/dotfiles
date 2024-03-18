@@ -51,7 +51,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "yamlls", "cssls", "tsserver", "eslint", "html", "jsonls", "tailwindcss", "emmet_ls",
-          "rust_analyzer", "lua_ls", "azure_pipelines_ls", "cssmodules_ls" }
+          "rust_analyzer", "marksman", "lua_ls", "cssmodules_ls" }
       })
     end
   },
@@ -114,15 +114,6 @@ return {
         git_status = {
           window = {
             position = "float",
-            mappings = {
-              ["A"]  = "git_add_all",
-              ["gu"] = "git_unstage_file",
-              ["ga"] = "git_add_file",
-              ["gr"] = "git_revert_file",
-              ["gc"] = "git_commit",
-              ["gp"] = "git_push",
-              ["gg"] = "git_commit_and_push",
-            }
           }
         }
       })

@@ -37,8 +37,4 @@ map.set("n", "<leader>h", "<C-W>h")
 map.set("n", "<leader>j", "<C-W>j")
 
 -- == CODE ACTIONS== --
-map.set("n", "<leader>f", "<cmd>:call CocAction('format')<CR>")
 map.set("n", "ccd", ":CocList diagnostics<CR>")
-
--- == GIT == --
--- map.set("n", "<leader>gb", "<cmd>:Git branch<CR>")
