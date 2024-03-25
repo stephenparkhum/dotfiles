@@ -76,9 +76,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" }
   },
   {
-    'merrickluo/lsp-tailwindcss',
-  },
-  {
     "startup-nvim/startup.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     config = function()
@@ -164,12 +161,6 @@ return {
       "sebkolind/luasnip-typescript",
     }
   },
-  {
-    'mbbill/undotree',
-    config = function()
-      vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<CR>")
-    end
-  },
   -- Smart Comments
   'tpope/vim-commentary',
   'kylechui/nvim-surround',
@@ -194,7 +185,7 @@ return {
       vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
     end
   },
-  'https://gitlab.com/yorickpeterse/nvim-pqf',
+  'yorickpeterse/nvim-pqf',
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
@@ -208,6 +199,8 @@ return {
           event = { "BufReadPre", "BufNewFile" },
           ignore_install = {},
           ensure_installed = {
+            "c",
+            "cpp",
             "gitignore",
             "javascript",
             "typescript",
@@ -227,6 +220,11 @@ return {
           highlight = {
             enable = true,
             use_languagetree = true,
+          },
+          query_linter = {
+            enable = true,
+            use_virtual_text = true,
+            lint_events = { "BufWrite", "CursorHold" },
           },
           incremental_selection = {
             enable = true,
@@ -265,7 +263,12 @@ return {
       })
     end,
   },
-  { 'akinsho/bufferline.nvim',                  version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies =
+    'nvim-tree/nvim-web-devicons'
+  },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
@@ -297,13 +300,18 @@ return {
   'nvim-lua/plenary.nvim',
   -- Telescope
   'nvim-telescope/telescope-project.nvim',
-  -- Telescope fzf
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  'nvim-telescope/telescope-ui-select.nvim',
+  'debugloop/telescope-undo.nvim',
   -- File browsing
   {
     'nvim-telescope/telescope-file-browser.nvim',
@@ -312,8 +320,6 @@ return {
   -- ESLINT LSP
   'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
-  -- Git
-  { 'dinhhuy258/git.nvim' },
   { 'onsails/lspkind.nvim' },
   {
     "nvimtools/none-ls.nvim",
@@ -348,6 +354,4 @@ return {
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
-  'nvim-telescope/telescope-ui-select.nvim',
-  'debugloop/telescope-undo.nvim',
 }

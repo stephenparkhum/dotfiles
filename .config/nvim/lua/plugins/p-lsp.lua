@@ -22,6 +22,9 @@ local on_attach = function(_, bfr)
   map.set("n", "<leader>dj", vim.diagnostic.goto_next, { buffer = 0 })
   map.set("n", "<leader>dk", vim.diagnostic.goto_prev, { buffer = 0 })
   map.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", { buffer = 0 })
+  -- Add these later!
+  -- ["<C-j>"] = {":move '>+1<CR>gv-gv", "Slide Text Up"},
+  -- ["<C-k>"] = {":move '<-2<CR>gv-gv", "Slide Text Down"},
 end
 
 null_ls.setup({
