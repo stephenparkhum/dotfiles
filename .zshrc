@@ -116,11 +116,6 @@ export EDITOR='nvim'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Delete NVM for eMoney-related work
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # FZF Ripgrep Settings
@@ -135,20 +130,20 @@ fi
 # a .nvmrc file in the directory. Also, revert to default 
 # version when entering a directory without .nvmrc
 #
-enter_directory() {
-if [[ $PWD == $PREV_PWD ]]; then
-    return
-fi
-
-PREV_PWD=$PWD
-if [[ -f ".nvmrc" ]]; then
-    nvm use
-    NVM_DIRTY=true
-elif [[ $NVM_DIRTY = true ]]; then
-    nvm use default
-    NVM_DIRTY=false
-fi
-}
+# enter_directory() {
+# if [[ $PWD == $PREV_PWD ]]; then
+#     return
+# fi
+# 
+# PREV_PWD=$PWD
+# if [[ -f ".nvmrc" ]]; then
+#     nvm use
+#     NVM_DIRTY=true
+# elif [[ $NVM_DIRTY = true ]]; then
+#     nvm use default
+#     NVM_DIRTY=false
+# fi
+# }
 
 export PROMPT_COMMAND=enter_directory
 
@@ -197,21 +192,6 @@ function gpc () {
 ## VS Code 
 alias c.='code .'
 
-## CLIENTS 
-
-# Extras 
-## Glossolalia 
-alias gloss='cd $HOME/Desktop/personal_dev/Glossolalia-Records-V2 && c.'
-
-## Maestus
-alias maes='cd $HOME/Desktop/personal_dev/Maestus-2020 && vim .'
-
-## Paraphilia
-alias para='cd $HOME/Desktop/personal_dev/Paraphilia-2021 && vim .'
-
-## Label Search 
-alias labels='cd $HOME/Desktop/personal_dev/label-search && vim .'
-
 ## Python 
 alias python='python3'
 
@@ -232,8 +212,9 @@ eval "$(tmuxifier init -)"
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
