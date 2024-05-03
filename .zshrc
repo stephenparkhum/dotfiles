@@ -130,20 +130,20 @@ fi
 # a .nvmrc file in the directory. Also, revert to default 
 # version when entering a directory without .nvmrc
 #
-# enter_directory() {
-# if [[ $PWD == $PREV_PWD ]]; then
-#     return
-# fi
-# 
-# PREV_PWD=$PWD
-# if [[ -f ".nvmrc" ]]; then
-#     nvm use
-#     NVM_DIRTY=true
-# elif [[ $NVM_DIRTY = true ]]; then
-#     nvm use default
-#     NVM_DIRTY=false
-# fi
-# }
+enter_directory() {
+if [[ $PWD == $PREV_PWD ]]; then
+    return
+fi
+
+PREV_PWD=$PWD
+if [[ -f ".nvmrc" ]]; then
+    nvm use
+    NVM_DIRTY=true
+elif [[ $NVM_DIRTY = true ]]; then
+    nvm use default
+    NVM_DIRTY=false
+fi
+}
 
 export PROMPT_COMMAND=enter_directory
 
@@ -195,26 +195,24 @@ alias c.='code .'
 ## Python 
 alias python='python3'
 
-## Discord/Midjourney 
-function midrun () {
-    python -u "$HOME/Desktop/personal_dev/midjourney-vote-system/main.py" $1 $2 $3
-}
-
-## HTB 
-alias htb='cd ~/HTB'
-
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
 ## Tmuxifier init
 eval "$(tmuxifier init -)"
 
+## Tmuxifier
+function tx () {
+  tmuxifier load-session $1
+}
+
+
 export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/bin:$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"

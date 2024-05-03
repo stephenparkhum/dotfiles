@@ -1,6 +1,18 @@
 return {
   -- Color scheme
   {
+    "mbbill/undotree",
+    config = function()
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    end,
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
@@ -51,7 +63,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "yamlls", "cssls", "tsserver", "eslint", "html", "jsonls", "tailwindcss", "emmet_ls",
-          "rust_analyzer", "marksman", "lua_ls", "cssmodules_ls" }
+          "marksman", "lua_ls", "cssmodules_ls" }
       })
     end
   },
@@ -199,7 +211,6 @@ return {
           event = { "BufReadPre", "BufNewFile" },
           ignore_install = {},
           ensure_installed = {
-            "c",
             "cpp",
             "gitignore",
             "javascript",
@@ -213,6 +224,13 @@ return {
             "dockerfile",
             "json",
             "html",
+            "rust",
+            "scss",
+            "solidity",
+            "styled",
+            "swift",
+            "toml",
+            "markdown_inline",
             "yaml",
             "bash",
           },
@@ -354,4 +372,11 @@ return {
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
+  -- Rust
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    ft = { 'rust' },
+  },
+  'simrat39/rust-tools.nvim',
 }
