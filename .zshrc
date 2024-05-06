@@ -169,7 +169,7 @@ alias cl='clear'
 alias v='nvim ' 
 alias vim='nvim ' 
 alias v.='nvim .'
-alias vcon='vim ~/.config/nvim'
+alias vcon='cd ~/.config/nvim && vim .'
 
 # Config Alias
 alias cs="config status"

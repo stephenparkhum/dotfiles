@@ -1,7 +1,30 @@
 -- Telescope Setup
 local action_state = require('telescope.actions.state') -- runtime (Plugin) exists somewhere as lua/telescope/actions/state.lua
+local function filenameFirst(_, path)
+  local tail = vim.fs.basename(path)
+  local parent = vim.fs.dirname(path)
+  if parent == "." then
+    return tail
+  end
+  return string.format("%s\t\t%s", tail, parent)
+end
 require('telescope').setup {
   defaults = {
+    winblend = 0,
+    layout_strategy = "vertical",
+    dynamic_preview_title = true,
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+    },
+    path_display = filenameFirst,
+    previewer = true,
     file_ignore_patterns = {
       "node_modules",
       "build",
@@ -49,7 +72,7 @@ end)
 map.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
 map.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
 map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-
+map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 
 local mappings = {}
 mappings.curr_buf = function()
