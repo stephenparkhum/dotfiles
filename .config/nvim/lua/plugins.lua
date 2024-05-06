@@ -94,40 +94,40 @@ return {
       require("startup").setup({ theme = "dashboard" }) -- put theme name here
     end
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    },
-    config = function()
-      require("neo-tree").setup({
-        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-        popup_border_style = "rounded",
-        enable_git_status = true,
-        name = {
-          use_git_status_colors = true,
-          highlight = "NeoTreeFileName"
-        },
-        modified = {
-          symbol = "[+]",
-          highlight = "NeoTreeModified",
-        },
-        window = {
-          width = 35
-        },
-        git_status = {
-          window = {
-            position = "float",
-          }
-        }
-      })
-    end
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons",
+  --     "MunifTanjim/nui.nvim",
+  --     "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+  --   },
+  --   config = function()
+  --     require("neo-tree").setup({
+  --       close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+  --       popup_border_style = "rounded",
+  --       enable_git_status = true,
+  --       name = {
+  --         use_git_status_colors = true,
+  --         highlight = "NeoTreeFileName"
+  --       },
+  --       modified = {
+  --         symbol = "[+]",
+  --         highlight = "NeoTreeModified",
+  --       },
+  --       window = {
+  --         width = 35
+  --       },
+  --       git_status = {
+  --         window = {
+  --           position = "float",
+  --         }
+  --       }
+  --     })
+  --   end
+  -- },
   {
     'romgrk/barbar.nvim',
     dependencies = {

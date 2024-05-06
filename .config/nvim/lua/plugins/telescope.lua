@@ -29,9 +29,31 @@ require('telescope').setup {
 require('telescope').load_extension("fzf")
 require("telescope").load_extension("file_browser")
 
+local builtin = require("telescope.builtin")
+
+local map = vim.keymap
+
+-- == TELESCOPE NAV == --
+map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
+map.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
+map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
+map.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>")
+map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
+map.set("n", "<leader>sg", function()
+  vim.ui.input({ prompt = "Grep > " }, function(input)
+    if input ~= nil then
+      builtin.grep_string({ search = input })
+    end
+  end)
+end)
+map.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
+map.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
+map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+
+
 local mappings = {}
 mappings.curr_buf = function()
   local opt = require('telescope.themes').get_dropdown({ height = 10, previewer = false })
-  require('telescope.builtin').current_buffer_fuzzy_find(opt)
+  builtin.current_buffer_fuzzy_find(opt)
 end
 return mappings

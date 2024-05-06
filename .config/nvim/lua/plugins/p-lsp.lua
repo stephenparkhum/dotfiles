@@ -115,9 +115,9 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" } -- setting vim values
 
 -- Global LSP mappings.
 map.set('n', '<leader>e', vim.diagnostic.open_float)
-map.set('n', '[d', vim.diagnostic.goto_prev)
-map.set('n', ']d', vim.diagnostic.goto_next)
 map.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- map.set('n', '[d', vim.diagnostic.goto_prev)
+-- map.set('n', ']d', vim.diagnostic.goto_next)
 map.set('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
 map.set('n', 'H', ':lua vim.lsp.buf.hover()<CR>')
 map.set('n', '<leader>.', ':lua vim.lsp.buf.code_action()<CR>')
