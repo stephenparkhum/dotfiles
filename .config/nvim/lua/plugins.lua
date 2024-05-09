@@ -88,47 +88,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" }
   },
   {
-    "startup-nvim/startup.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    config = function()
-      require("startup").setup({ theme = "dashboard" }) -- put theme name here
-    end
-  },
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   branch = "v3.x",
-  --   lazy = false,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-tree/nvim-web-devicons",
-  --     "MunifTanjim/nui.nvim",
-  --     "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-  --   },
-  --   config = function()
-  --     require("neo-tree").setup({
-  --       close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  --       popup_border_style = "rounded",
-  --       enable_git_status = true,
-  --       name = {
-  --         use_git_status_colors = true,
-  --         highlight = "NeoTreeFileName"
-  --       },
-  --       modified = {
-  --         symbol = "[+]",
-  --         highlight = "NeoTreeModified",
-  --       },
-  --       window = {
-  --         width = 35
-  --       },
-  --       git_status = {
-  --         window = {
-  --           position = "float",
-  --         }
-  --       }
-  --     })
-  --   end
-  -- },
-  {
     'romgrk/barbar.nvim',
     dependencies = {
       'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
@@ -151,27 +110,6 @@ return {
       "saadparwaiz1/cmp_luasnip",     -- for lua autocompletion
       "rafamadriz/friendly-snippets", -- useful snippet library
     },
-  },
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig" },             -- Required
-      { "williamboman/mason.nvim" },           -- Optional
-      { "williamboman/mason-lspconfig.nvim" }, -- Optional
-      -- Autocompletion
-      { "hrsh7th/nvim-cmp" },                  -- Required
-      { "hrsh7th/cmp-nvim-lsp" },              -- Required
-      {
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp"
-      },
-      "sebkolind/luasnip-typescript",
-    }
   },
   -- Smart Comments
   'tpope/vim-commentary',
@@ -335,7 +273,115 @@ return {
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
-  -- ESLINT LSP
+  -- LSP Config
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/nvim-cmp",
+      "L3MON4D3/LuaSnip",
+      "j-hui/fidget.nvim",
+    },
+    config = function()
+      local cmp = require("cmp")
+      local cmp_lsp = require("cmp_nvim_lsp")
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        {},
+        vim.lsp.protocol.make_client_capabilities(),
+        cmp_lsp.default_capabilities()
+      )
+      local servers = {
+        "lua_ls",
+        "tsserver",
+        "clangd",
+        "cssls",       -- css-lsp
+        "html",        -- html-lsp
+        "lua_ls",      -- lua-language-server
+        "rust_analyzer",
+        "tailwindcss", -- tailwindcss-language-server
+        "tsserver",    -- typescript-language-server
+        "yamlls",      -- yaml-language-server
+      }
+      local formatters = {
+        "black",
+        "clang_format",
+        "isort",
+        "prettier",
+        "prettierd",
+        "stylua",
+        "pyright",
+      }
+      local ensure_installed = vim.tbl_extend("keep", servers, formatters)
+
+      require("fidget").setup({})
+      require("mason").setup()
+      require("mason-lspconfig").setup({
+        ensure_installed = ensure_installed,
+        handlers = {
+          function(server_name)
+            require("lspconfig")[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
+
+          ["lua_ls"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup({
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  runtime = { version = "Lua 5.1" },
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                },
+              },
+            })
+          end,
+        },
+      })
+
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body) -- TODO: Maybe don't need?
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+          ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-Space>"] = cmp.mapping.complete(),
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" }, -- TODO: Maybe don't need?
+        }, {
+          -- TODO: What about path?
+          { name = "buffer" },
+        }),
+      })
+
+      vim.diagnostic.config({
+        float = {
+          focusable = false,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      })
+    end,
+  },
   'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
   { 'onsails/lspkind.nvim' },
@@ -379,4 +425,23 @@ return {
     ft = { 'rust' },
   },
   'simrat39/rust-tools.nvim',
+  {
+    "echasnovski/mini.nvim",
+    config = function()
+      -- Better Around/Inside textobjects
+      --
+      -- Examples:
+      --  - va)  - [V]isually select [A]round [)]paren
+      --  - yinq - [Y]ank [I]nside [N]ext [']quote
+      --  - ci'  - [C]hange [I]nside [']quote
+      require("mini.ai").setup({ n_lines = 500 })
+
+      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      --
+      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sr)'  - [S]urround [R]eplace [)] [']
+      require("mini.surround").setup()
+    end,
+  }
 }

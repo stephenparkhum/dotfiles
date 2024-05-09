@@ -1,14 +1,6 @@
 local map = vim.keymap
 
-local lsp_zero = require('lsp-zero')
 local null_ls = require("null-ls")
-
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({ buffer = bufnr })
-end)
-
 
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
