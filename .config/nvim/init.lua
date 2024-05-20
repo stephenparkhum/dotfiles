@@ -63,7 +63,7 @@ require("lazy").setup(plugs, {
 
 -- PLUGIN CONFIGS
 require("plugins.telescope")
-require("plugins.cmp")
+-- require("plugins.cmp")
 require("plugins.p-lsp")
 require("plugins.prettier")
 require("plugins.harpoon")
