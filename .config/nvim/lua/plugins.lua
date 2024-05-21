@@ -87,6 +87,18 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  },
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -122,7 +134,16 @@ return {
   },
   -- Smart Comments
   'tpope/vim-commentary',
-  'kylechui/nvim-surround',
+  {
+    'kylechui/nvim-surround',
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
   -- Git Plugins
   {
     "kdheepak/lazygit.nvim",
@@ -249,7 +270,6 @@ return {
     end,
     opts = {}
   },
-  -- Buffer Navigation
   {
     'nvim-lualine/lualine.nvim',
     opts = {
@@ -264,18 +284,31 @@ return {
   'nvim-lua/popup.nvim',
   'nvim-lua/plenary.nvim',
   -- Telescope
-  'nvim-telescope/telescope-project.nvim',
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    event = 'VimEnter',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      { -- If encountering errors, see telescope-fzf-native README for installation instructions
+        'nvim-telescope/telescope-fzf-native.nvim',
+
+        -- `build` is used to run some command when the plugin is installed/updated.
+        -- This is only run then, not every time Neovim starts up.
+        build = 'make',
+
+        -- `cond` is a condition used to determine whether this plugin should be
+        -- installed and loaded.
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
+      -- Useful for getting pretty icons, but requires a Nerd Font.
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+    },
   },
-  'nvim-telescope/telescope-ui-select.nvim',
+  'nvim-telescope/telescope-project.nvim',
   'debugloop/telescope-undo.nvim',
   -- File browsing
   {
@@ -391,7 +424,6 @@ return {
       })
     end,
   },
-  'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
   { 'onsails/lspkind.nvim' },
   {
@@ -403,6 +435,7 @@ return {
   { 'rhysd/vim-grammarous' },
   -- TODO Comments Highlighting
   { 'folke/todo-comments.nvim' },
+  { 'numToStr/Comment.nvim',   opts = {} }, -- "gc" to comment visual lines/regions
   ------------------------ VIM TSX ------------------------
   -- by default, if you open tsx file, neovim does not show syntax colors
   { 'ianks/vim-tsx' },
@@ -415,35 +448,26 @@ return {
   { 'pangloss/vim-javascript' },
   { 'mattn/emmet-vim' },
   'leafgarland/typescript-vim',
+
   --Vim Snippets
   { 'phux/vim-snippets' },
-  --Number Toggle -- toggles relative numbers on and off
-  { 'jeffkreeftmeijer/vim-numbertoggle' },
-  --Lightbulb in LSP Code action
-  -- { 'kosayoda/nvim-lightbulb' },
+  { 'jeffkreeftmeijer/vim-numbertoggle' }, --Number Toggle -- toggles relative numbers on and off
+
   --Smart Buffer
   { 'johann2357/nvim-smartbufs' },
   { 'MunifTanjim/prettier.nvim' },
   "axelvc/template-string.nvim",
   'tiagovla/scope.nvim',
   'airblade/vim-gitgutter',
-  -- Rust
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    ft = { 'rust' },
-  },
-  'simrat39/rust-tools.nvim',
   {
     "echasnovski/mini.nvim",
     config = function()
       -- Better Around/Inside textobjects
-      --
       -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
       --  - yinq - [Y]ank [I]nside [N]ext [']quote
       --  - ci'  - [C]hange [I]nside [']quote
-      require("mini.ai").setup({ n_lines = 500 })
+      require("mini.ai").setup({ n_lines = 200 })
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --

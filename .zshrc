@@ -136,6 +136,8 @@ function gpc () {
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 
+alias txl="tmux ls"
+
 function tx () {
   tmuxifier load-session $1
 }

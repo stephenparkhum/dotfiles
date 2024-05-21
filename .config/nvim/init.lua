@@ -6,15 +6,6 @@ set_local.encoding = "utf-8"
 set_local.shell = "/bin/zsh"
 vim.scriptencoding = 'utf-8'
 
--- use space as a the leader key
-set_global.mapleader = ' '
-set_global.maplocalleader = ' '
-
--- DEFAULT SETUPS --
-require("options")
-local plugs = require("plugins")
-require("maps")
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -27,6 +18,8 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 set_local.rtp:prepend(lazypath)
+
+local plugs = require("plugins")
 
 require("lazy").setup(plugs, {
   defaults = { lazy = false, version = false },
@@ -60,6 +53,18 @@ require("lazy").setup(plugs, {
     },
   },
 })
+
+
+-- use space as a the leader key
+set_global.mapleader = ' '
+set_global.maplocalleader = ' '
+
+-- DEFAULT SETUPS --
+require("options")
+require("maps")
+
+-- Setup "Comment" plugin
+require('Comment').setup()
 
 -- PLUGIN CONFIGS
 require("plugins.telescope")
