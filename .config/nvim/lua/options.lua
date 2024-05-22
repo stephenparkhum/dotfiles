@@ -1,6 +1,7 @@
 -- Add general Noevim options here
 local set = vim.opt
 local tab_shift = 2
+local global = vim.g
 
 set.ma = true
 set.termguicolors = true
@@ -32,3 +33,5 @@ set.scrolloff = tab_shift * 5
 set.sidescrolloff = tab_shift * 5
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.backupskip = '/tmp/*,/private/tmp/*'
+
+global.copilot_enabled = false
