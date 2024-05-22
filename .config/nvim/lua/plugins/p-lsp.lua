@@ -41,6 +41,7 @@ null_ls.setup({
 
 -- Setup language servers.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 
