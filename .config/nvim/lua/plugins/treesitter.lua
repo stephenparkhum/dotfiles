@@ -63,7 +63,7 @@ return {
   config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
 		require("treesitter-context").setup({
-			enable = true,
+			enable = false,
 			max_lines = 0,
 			min_window_height = 0,
 			line_numbers = true,
