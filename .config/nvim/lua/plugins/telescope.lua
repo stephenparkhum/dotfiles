@@ -5,21 +5,14 @@ return {
   branch = '0.1.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    { -- If encountering errors, see telescope-fzf-native README for installation instructions
+    {
       'nvim-telescope/telescope-fzf-native.nvim',
-
-      -- `build` is used to run some command when the plugin is installed/updated.
-      -- This is only run then, not every time Neovim starts up.
       build = 'make',
-
-      -- `cond` is a condition used to determine whether this plugin should be
-      -- installed and loaded.
-      cond = function()
+      config = function()
         return vim.fn.executable 'make' == 1
       end,
     },
     { 'nvim-telescope/telescope-ui-select.nvim' },
-    -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
   },
   config = function()
@@ -65,10 +58,10 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true,               -- false will only do exact matching
+          fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case",   -- or "ignore_case" or "respect_case"
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
           -- the default case_mode is "smart_case"
         }
       }
@@ -95,8 +88,14 @@ return {
         end
       end)
     end)
-    map.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
-    map.set("n", "<leader>gb", "<cmd>Telescope git_branches<CR>")
+    map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
+    map.set("n", "<leader>sg", function()
+      vim.ui.input({ prompt = "Grep > " }, function(input)
+        if input ~= nil then
+          builtin.grep_string({ search = input })
+        end
+      end)
+    end)
     map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 

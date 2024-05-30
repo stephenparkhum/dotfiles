@@ -1,22 +1,47 @@
--- LSP Autocomplete
+-- Completions
 return {
-    "hrsh7th/nvim-cmp",
-    lazy = false,
-    priority = 100,
-    event = "InsertEnter",
-    config = function()
-        require "custom.cmp"
-    end,
+  {
+    "hrsh7th/cmp-nvim-lsp",
+    opts = {},
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    opts = {},
     dependencies = {
-        "onsails/lspkind.nvim",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-path", -- source for file system paths in commands
-        "hrsh7th/cmp-buffer",
-        {
-            "L3MON4D3/LuaSnip", -- snippet engine
-            build = "make install_jsregexp"
-        },
-        "saadparwaiz1/cmp_luasnip",     -- for lua autocompletion
-        "rafamadriz/friendly-snippets", -- useful snippet library
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
     },
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    config = function()
+      local cmp = require("cmp")
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+          end,
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" }, -- For luasnip users.
+        }, {
+          { name = "buffer" },
+        }),
+      })
+    end,
+  },
 }

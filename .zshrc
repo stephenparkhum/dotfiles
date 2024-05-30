@@ -168,3 +168,8 @@ source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ## Tmuxifier init
 eval "$(tmuxifier init -)"
 
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+
+eval "$(rbenv init - zsh)"
+

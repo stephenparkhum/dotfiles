@@ -3,8 +3,8 @@ import = [
 ]
 
 [font]
-normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular"}
-size = 15
+normal = { family = "Iosevka Nerd Font Mono", style = "Regular"}
+size = 16
 
 [window]
 padding = {x = 9, y = 9}
