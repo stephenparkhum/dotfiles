@@ -44,16 +44,6 @@ return {
 					},
 				},
 				modules = {},
-				autotag = {
-					enable = true,
-					filetypes = {
-						"javascript",
-						"typescript",
-						"jsx",
-						"tsx",
-						"html"
-					}
-				},
 				auto_install = true,
 				indent = {
 					enable = true,
