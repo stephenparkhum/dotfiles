@@ -18,6 +18,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
     git
     zsh-autosuggestions
@@ -102,8 +103,6 @@ alias zash='vim ~/.zshrc'
 alias cl='clear'
 
 # Neovim Alias
-# ** maybe in the future think about making this just 'vi' **  
-alias v='nvim ' 
 alias vim='nvim ' 
 alias v.='nvim .'
 alias vcon='cd ~/.config/nvim && vim .'
@@ -124,14 +123,6 @@ alias python='python3'
 
 # Edit / View Config
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-function gpn () {
-    git push --set-upstream origin $1; git checkout $2; git pull && git fetch --all; git merge $1; gp;
-}
-
-function gpc () {
-    git checkout $1 && git pull && git checkout $2 && git merge $1;
-}
 
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
@@ -164,7 +155,9 @@ esac
 
 # pnpm end
 
+# Syntax highlighting in terminal
 source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 ## Tmuxifier init
 eval "$(tmuxifier init -)"
 
