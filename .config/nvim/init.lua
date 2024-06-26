@@ -12,8 +12,8 @@ set_global.maplocalleader = ' '
 
 -- DEFAULT SETUPS --
 require("options")
-require("maps")
 require("lazy_init")
+require("maps")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd

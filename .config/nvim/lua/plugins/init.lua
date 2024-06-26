@@ -1,8 +1,13 @@
 return {
     -- Common Dependencies
     {
+        "nvim-tree/nvim-web-devicons",
+    },
+    {
+        "nvim-lua/plenary.nvim",
+    },
+    {
         'nvim-lua/popup.nvim',
-        name = "popup",
     },
     {
         'MunifTanjim/prettier.nvim',
@@ -33,21 +38,12 @@ return {
         name = "eslint",
     },
     'onsails/lspkind.nvim',
-    {
-        "nvim-lua/plenary.nvim",
-        name = "plenary",
-    },
-    {
-        "nvim-tree/nvim-web-devicons",
-        name = "devicons",
-    },
     --Smart Buffer
     { 'johann2357/nvim-smartbufs' },
     { 'MunifTanjim/prettier.nvim' },
     "axelvc/template-string.nvim",
     {
         "nvimtools/none-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" }
     },
     -- Grammar checking because I can't english
     { 'rhysd/vim-grammarous' },
