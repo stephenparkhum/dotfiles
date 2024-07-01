@@ -165,4 +165,3 @@ eval "$(tmuxifier init -)"
 # the following to ~/.zshrc:
 
 eval "$(rbenv init - zsh)"
-

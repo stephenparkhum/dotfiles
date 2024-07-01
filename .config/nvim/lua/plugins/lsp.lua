@@ -16,6 +16,15 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"j-hui/fidget.nvim",
+		},
 		lazy = false,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -36,6 +45,17 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
+
+			vim.diagnostic.config {
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			}
 		end,
 	},
 }

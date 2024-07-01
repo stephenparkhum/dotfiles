@@ -3,9 +3,10 @@ return {
   opts = {
     options = {
       theme = 'catppuccin',
-      sections = {
-        lualine_x = { 'fileformat', 'filetype' },
-      },
-    }
+    },
+    sections = {
+      lualine_x = { 'format', 'filetype' },
+      lualine_y = { 'progress' },
+    },
   }
 }

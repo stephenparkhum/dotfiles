@@ -18,6 +18,8 @@ require("maps")
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+local MyGroup = augroup("Group Yeah", {})
+
 autocmd("TextYankPost", {
   group = augroup("HighlightYank", {}),
   pattern = "*",
@@ -29,5 +31,29 @@ autocmd("TextYankPost", {
   end,
 })
 
+autocmd("FileType", {
+  pattern = "TelescopeResults",
+  callback = function(ctx)
+    vim.api.nvim_buf_call(ctx.buf, function()
+      vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+    end)
+  end,
+})
+autocmd("LspAttach", {
+  group = MyGroup,
+  callback = function(e)
+    local opts = { buffer = e.buf }
+    vim.keymap.set("n", "<leader>ca", function()
+      vim.lsp.buf.code_action()
+    end, opts)
+    vim.keymap.set("n", "gi", function()
+      vim.lsp.buf.implementation()
+    end, opts)
+    vim.keymap.set("n", "<leader>rn", function()
+      vim.lsp.buf.rename()
+    end, opts)
+  end,
+})
 -- Setup "Comment" plugin
 require('Comment').setup()

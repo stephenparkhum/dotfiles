@@ -1,13 +1,23 @@
 import = [
-  "~/.config/alacritty/catppuccin-macchiato.toml"
+  "~/.config/alacritty/themes/catppuccin-macchiato.toml"
 ]
 
+[shell]
+program = "/bin/zsh"
+# args = ["-l", "-c", "-2", "tmux a -t code || tmux new -s code"]
+# This basically makes it so that tmux starts right at the start
+
 [font]
-normal = { family = "Iosevka Nerd Font Mono", style = "Regular"}
-size = 16
+size = 15
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
 
 [window]
-padding = {x = 9, y = 9}
+padding = {x = 8, y = 8}
+position = {x = 200, y = 100}
+startup_mode = "Maximized"
 
 [selection]
 save_to_clipboard = true 
