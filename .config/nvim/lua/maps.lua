@@ -16,12 +16,8 @@ map.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- == undotree == --
 map.set("n", "<leader>u", "<cmd>:UndoTreeToggle<CR>")
 
--- == BUFFER NAV == --
-map.set("n", "<leader>b", "<cmd>:bp<CR>")
-map.set("n", "<leader>bn", "<cmd>:bnext<CR>")
-map.set("n", "<leader>bp", "<cmd>:bprevious<CR>")
-map.set("n", "<leader>bf", "<cmd>:bfirst<CR>")
-map.set("n", "<leader>bl", "<cmd>:blast<CR>")
+-- == DEBUGGING == --
+map.set("n", "<leader>bp", ":lua require'dap'.toggle_breakpoint()")
 
 -- == NVIM SMARTBUFS == --
 map.set("n", "<Right>", ":lua require('nvim-smartbufs').goto_next_buffer()<CR>")
