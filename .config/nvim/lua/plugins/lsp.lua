@@ -36,6 +36,7 @@ return {
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 			local lspconfig = require("lspconfig")
+
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
 			})
@@ -43,6 +44,9 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.shopify_theme_ls.setup({
 				capabilities = capabilities,
 			})
 
