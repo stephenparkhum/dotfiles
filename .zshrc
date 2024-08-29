@@ -141,7 +141,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
-addBeforePath $NVM_DIR/versions/node/v18.17.1/bin:$PATH
+addBeforePath $NVM_DIR/versions/node/v18.20.4/bin:$PATH
 addToPath /opt/homebrew/bin
 addToPath /usr/bin
 addToPath /usr/local/bin
