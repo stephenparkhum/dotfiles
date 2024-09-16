@@ -93,6 +93,7 @@ return {
 		end)
 		map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+		map.set("n", "<leader>cb", "<cmd>Telescope buffers<CR>", { desc = "[C]urrent [B]uffers" })
 
 		local mappings = {}
 		mappings.curr_buf = function()

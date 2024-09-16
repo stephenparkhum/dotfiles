@@ -28,16 +28,17 @@ return {
 		lazy = false,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local map = vim.keymap.set
 
-			vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			map("n", "H", vim.lsp.buf.hover, {})
+			map("n", "<leader>gd", vim.lsp.buf.definition, {})
+			map("n", "<leader>gi", vim.lsp.buf.implementation, {})
+			map("n", "<leader>gr", vim.lsp.buf.references, {})
+			map("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 			local lspconfig = require("lspconfig")
 
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.html.setup({
@@ -50,7 +51,7 @@ return {
 				capabilities = capabilities,
 			})
 
-			vim.diagnostic.config {
+			vim.diagnostic.config({
 				float = {
 					focusable = false,
 					style = "minimal",
@@ -59,7 +60,7 @@ return {
 					header = "",
 					prefix = "",
 				},
-			}
+			})
 		end,
 	},
 }
