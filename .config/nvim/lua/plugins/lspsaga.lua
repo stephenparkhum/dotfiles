@@ -70,7 +70,7 @@ return {
 		map("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { desc = "LSP Outline", silent = true })
 
 		-- Hover Doc
-		-- map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+		map("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 	end,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter", -- optional
