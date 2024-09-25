@@ -69,6 +69,9 @@ return {
 		-- Outline
 		map("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { desc = "LSP Outline", silent = true })
 
+		-- Rename
+		map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "LSP Rename", silent = true })
+
 		-- Hover Doc
 		map("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 	end,
