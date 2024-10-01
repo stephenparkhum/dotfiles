@@ -19,12 +19,7 @@ map.set("n", "<leader>u", "<cmd>:UndoTreeToggle<CR>")
 -- == DEBUGGING == --
 map.set("n", "<leader>bp", ":lua require'dap'.toggle_breakpoint()")
 
--- == NVIM DIAGNOSTICS == --
---
-
 -- == NVIM SMARTBUFS == --
-map.set("n", "<Right>", ":lua require('nvim-smartbufs').goto_next_buffer()<CR>")
-map.set("n", "<Left>", ":lua require('nvim-smartbufs').goto_left_buffer()<CR>")
 map.set("n", "<leader>1", ":lua require('nvim-smartbufs').goto_buffer(1)<CR>")
 map.set("n", "<leader>2", ":lua require('nvim-smartbufs').goto_buffer(2)<CR>")
 map.set("n", "<leader>3", ":lua require('nvim-smartbufs').goto_buffer(3)<CR>")
