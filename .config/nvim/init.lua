@@ -6,7 +6,7 @@ set_local.encoding = "utf-8"
 set_local.shell = "/bin/zsh"
 vim.scriptencoding = "utf-8"
 
--- use space as a the leader key
+-- use space as the leader key
 set_global.mapleader = " "
 set_global.maplocalleader = " "
 
@@ -44,9 +44,6 @@ autocmd("LspAttach", {
 	group = MyGroup,
 	callback = function(e)
 		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "<leader>ca", function()
-			vim.lsp.buf.code_action()
-		end, opts)
 		vim.keymap.set("n", "gi", function()
 			vim.lsp.buf.implementation()
 		end, opts)

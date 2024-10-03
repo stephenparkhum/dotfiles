@@ -9,6 +9,11 @@ return {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "harper_ls" },
+			})
+		end,
 		lazy = false,
 		opts = {
 			auto_install = true,
@@ -34,7 +39,6 @@ return {
 			map("n", "<leader>gd", vim.lsp.buf.definition, {})
 			map("n", "<leader>gi", vim.lsp.buf.implementation, {})
 			map("n", "<leader>gr", vim.lsp.buf.references, {})
-			map("n", "<leader>ca", vim.lsp.buf.code_action, {})
 
 			local lspconfig = require("lspconfig")
 
@@ -49,6 +53,28 @@ return {
 			})
 			lspconfig.shopify_theme_ls.setup({
 				capabilities = capabilities,
+			})
+			lspconfig.harper_ls.setup({
+				capabilities = capabilities,
+				settings = {
+					["harper-ls"] = {
+						linters = {
+							spell_check = true,
+							spelled_numbers = false,
+							sentence_capitalization = false,
+							long_sentences = true,
+							repeated_words = false,
+							spaces = true,
+							matcher = true,
+							correct_number_suffix = true,
+							number_suffix_capitalization = false,
+							multiple_sequential_pronouns = true,
+							linking_verbs = false,
+							avoid_curses = false,
+							terminating_conjunctions = false,
+						},
+					},
+				},
 			})
 
 			vim.diagnostic.config({

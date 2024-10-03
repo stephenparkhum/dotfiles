@@ -1,4 +1,4 @@
--- Add general Noevim options here
+-- Add general Neovim options here
 local set = vim.opt
 local tab_shift = 2
 local global = vim.g

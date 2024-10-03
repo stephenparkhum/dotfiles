@@ -3,7 +3,7 @@ local map = vim.keymap
 map.set("n", "<leader>so", "<cmd>:so %<CR>")
 
 -- == GENERAL MOVES == --
--- Exit insert mode without hitting Esc
+-- Exit insert mode without hitting Esq
 map.set("i", "jj", "<Esc>")
 map.set("n", "J", "5j")
 map.set("n", "K", "5k")

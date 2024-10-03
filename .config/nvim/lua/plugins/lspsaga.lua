@@ -39,7 +39,7 @@ return {
 		-- map('n', 'gr', '<cmd>Lspsaga rename<CR>', { desc = 'LSP rename', silent = true })
 
 		-- Peek Definition
-		-- you can edit the definition file in this flaotwindow
+		-- you can edit the definition file in this float window
 		-- also support open/vsplit/etc operation check definition_action_keys
 		-- support tagstack C-t jump back
 		map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition", silent = true })
@@ -50,7 +50,7 @@ return {
 		-- Show cursor diagnostic
 		map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 
-		-- Diagnsotic jump can use `<c-o>` to jump back
+		-- Diagnostic jump can use `<c-o>` to jump back
 		map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 		map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 
