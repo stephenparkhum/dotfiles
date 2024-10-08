@@ -1,0 +1,56 @@
+import = [
+  "~/.config/alacritty/themes/catppuccin-macchiato.toml"
+]
+
+[shell]
+program = "/bin/zsh"
+# args = ["-l", "-c", "-2", "tmux a -t code || tmux new -s code"]
+# This basically makes it so that tmux starts right at the start
+
+[env]
+TERM = "xterm-256color"
+
+[cursor]
+unfocused_hollow = true
+thickness = 0.10
+blink_timeout = 0
+
+[cursor.style]
+blinking = "Always"
+shape = "Beam"
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
+
+[window]
+padding = {x = 8, y = 8}
+startup_mode = "Maximized"
+dynamic_padding = true
+decorations = "None"
+
+[window.position]
+x = 200
+y = 100
+
+[window.dimensions]
+columns = 80
+lines = 25
+
+[selection]
+save_to_clipboard = true 
