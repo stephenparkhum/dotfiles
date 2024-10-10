@@ -12,7 +12,7 @@ TERM = "xterm-256color"
 
 [cursor]
 unfocused_hollow = true
-thickness = 0.10
+thickness = 0.20
 blink_timeout = 0
 
 [cursor.style]
@@ -39,18 +39,12 @@ family = "JetBrainsMono Nerd Font"
 style = "Bold Italic"
 
 [window]
-padding = {x = 8, y = 8}
+padding = {x = 5, y = 5}
 startup_mode = "Maximized"
-dynamic_padding = true
-decorations = "None"
-
-[window.position]
-x = 200
-y = 100
 
 [window.dimensions]
-columns = 80
-lines = 25
+columns = 75
+lines = 50
 
 [selection]
 save_to_clipboard = true 
