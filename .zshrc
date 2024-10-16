@@ -105,7 +105,7 @@ alias cl='clear'
 # Neovim Alias
 alias vim='nvim ' 
 alias v.='nvim .'
-alias vcon='cd ~/.config/nvim && vim .'
+alias vcon='chezmoi ~/.config/nvim'
 
 # Config Alias
 alias cs="config status"

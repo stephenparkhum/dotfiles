@@ -97,13 +97,14 @@ export PROMPT='${COLOR_USR}%n - ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${
 
 
 # ALIASES 
-alias zash='vim ~/.zshrc'
+alias zash='chezmoi edit ~/.zshrc'
 alias cl='clear'
+alias ca='chezmoi -v apply'
 
 # Neovim Alias
 alias vim='nvim ' 
 alias v.='nvim .'
-alias vcon='cd ~/.config/nvim && vim .'
+alias vcon='chezmoi edit ~/.config/nvim'
 
 # Config Alias
 alias cs="config status"
