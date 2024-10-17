@@ -78,6 +78,28 @@ return {
 					-- and should return true or false
 					include_surrounding_whitespace = true,
 				},
+				move = {
+					enable = true,
+					set_jumps = true,
+					goto_next_start = {
+						["]f"] = { query = "@call.outer", desc = "Next function call start" },
+						["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
+						["]c"] = { query = "@class.outer", desc = "Next class start" },
+						["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
+						["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+					},
+				},
+				swap = {
+					enable = true,
+					swap_next = {
+						["<leader>na"] = "@parameter.inner",
+						["<leader>nm"] = "@function.outer",
+					},
+					swap_previous = {
+						["<leader>pa"] = "@parameter.outer",
+						["<leader>pm"] = "@function.outer",
+					},
+				},
 			},
 			incremental_selection = {
 				enable = true,
