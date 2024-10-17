@@ -41,6 +41,10 @@ return {
 						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignement" },
 						["l="] = { query = "@assignment.lhs", desc = "Select left hand part of an assignement" },
 						["r="] = { query = "@assignment.rhs", desc = "Select right hand part of an assignement" },
+
+						["al"] = { query = "@loop.outer", desc = "Select outter part of an loop" },
+						["il"] = { query = "@loop.inner", desc = "Select inner part of an loop" },
+
 						-- You can use the capture groups defined in textobjects.scm
 						["af"] = "@function.outer",
 						["if"] = "@function.inner",
