@@ -86,7 +86,13 @@ return {
 						["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
 						["]c"] = { query = "@class.outer", desc = "Next class start" },
 						["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
-						["]l"] = { query = "@loop.outer", desc = "Next loop start" },
+						["]l"] = { query = "@loop.inner", desc = "Next loop start" },
+
+						["[f"] = { query = "@call.inner", desc = "Next function call start" },
+						["[m"] = { query = "@function.inner", desc = "Next method/function def start" },
+						["[c"] = { query = "@class.inner", desc = "Next class start" },
+						["[i"] = { query = "@conditional.inner", desc = "Next conditional start" },
+						["[l"] = { query = "@loop.inner", desc = "Next loop start" },
 					},
 				},
 				swap = {

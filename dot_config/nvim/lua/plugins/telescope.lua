@@ -48,6 +48,8 @@ return {
 					"build",
 					"coverage",
 					"public",
+					"*.webp",
+					"readonly_*",
 				},
 				prompt_prefix = "$ ",
 				mappings = {
