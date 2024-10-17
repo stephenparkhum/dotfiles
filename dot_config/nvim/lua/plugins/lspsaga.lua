@@ -14,6 +14,12 @@ return {
 					tabe = "t",
 				},
 			},
+			ui = {
+				devicon = true,
+			},
+			lightbulb = {
+				enable = false,
+			},
 			outline = {
 				layout = "float",
 				-- keys = {
