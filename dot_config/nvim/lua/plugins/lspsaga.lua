@@ -16,7 +16,6 @@ return {
 			},
 			outline = {
 				layout = "float",
-				-- commented out because its all the default but i'll forget
 				-- keys = {
 				--   toggle_or_jump = 'o',
 				--   quit = 'q',
@@ -36,7 +35,7 @@ return {
 		map({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "Code action", silent = true })
 
 		-- Rename
-		-- map('n', 'gr', '<cmd>Lspsaga rename<CR>', { desc = 'LSP rename', silent = true })
+		map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "LSP Rename", silent = true })
 
 		-- Peek Definition
 		-- you can edit the definition file in this float window
@@ -47,8 +46,11 @@ return {
 		-- Show line diagnostics
 		map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
-		-- Show cursor diagnostic
-		map("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+		-- Show buffer diagnostics
+		map("n", "<leader>cb", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+
+		-- Show workspace diagnostics
+		map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 
 		-- Diagnostic jump can use `<c-o>` to jump back
 		map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
@@ -68,9 +70,6 @@ return {
 
 		-- Outline
 		map("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { desc = "LSP Outline", silent = true })
-
-		-- Rename
-		map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "LSP Rename", silent = true })
 
 		-- Hover Doc
 		map("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
