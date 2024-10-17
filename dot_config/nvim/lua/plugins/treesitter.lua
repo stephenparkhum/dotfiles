@@ -2,18 +2,19 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"nvim-treesitter/nvim-treesitter-context",
 	},
 	config = function(_)
 		require("nvim-treesitter.configs").setup({
-			event = { "BufReadPre", "BufNewFile" },
 			ensure_installed = {
 				"css",
 				"devicetree",
 				"html",
 				"javascript",
+				"typescript",
 				"jsdoc",
 				"lua",
 				"markdown",
@@ -21,7 +22,6 @@ return {
 				"python",
 				"scss",
 				"rust",
-				"typescript",
 				"tsx",
 				"vim",
 				"vimdoc",
@@ -35,9 +35,12 @@ return {
 			textobjects = {
 				select = {
 					enable = true,
-					-- Automatically jump forward to textobj, similar to targets.vim
 					lookahead = true,
 					keymaps = {
+						["a="] = { query = "@assignment.outer", desc = "Select outter part of an assignement" },
+						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignement" },
+						["l="] = { query = "@assignment.lhs", desc = "Select left hand part of an assignement" },
+						["r="] = { query = "@assignment.rhs", desc = "Select right hand part of an assignement" },
 						-- You can use the capture groups defined in textobjects.scm
 						["af"] = "@function.outer",
 						["if"] = "@function.inner",

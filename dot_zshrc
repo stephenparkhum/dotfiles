@@ -107,7 +107,7 @@ alias v.='nvim .'
 alias vcon='chezmoi edit ~/.config/nvim'
 
 # Config Alias
-alias cs="config status"
+# alias cs="config status"
 
 ## Git Aliases
 alias ga='git add .;'
