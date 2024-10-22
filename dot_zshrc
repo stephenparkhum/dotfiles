@@ -106,8 +106,12 @@ alias vim='nvim '
 alias v.='nvim .'
 alias vcon='chezmoi edit ~/.config/nvim'
 
+# Edit / View Config
+# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='chezmoi cd && git'
+
 # Config Alias
-# alias cs="config status"
+alias cs="chezmoi cd && git status"
 
 ## Git Aliases
 alias ga='git add .;'
@@ -119,9 +123,6 @@ alias c.='code .'
 
 ## Python 
 alias python='python3'
-
-# Edit / View Config
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 ## Tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
