@@ -40,11 +40,8 @@ return {
 	"onsails/lspkind.nvim",
 	--Smart Buffer
 	{ "johann2357/nvim-smartbufs" },
-	{ "MunifTanjim/prettier.nvim" },
-	"axelvc/template-string.nvim",
-	{
-		"nvimtools/none-ls.nvim",
-	},
+	{ "axelvc/template-string.nvim" },
+	{ "nvimtools/none-ls.nvim" },
 	-- Grammar checking because I can't english
 	{ "rhysd/vim-grammarous" },
 	-- TODO Comments Highlighting
