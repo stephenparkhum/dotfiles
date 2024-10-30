@@ -46,17 +46,21 @@ return {
 		-- Peek Definition
 		-- you can edit the definition file in this float window
 		-- also support open/vsplit/etc operation check definition_action_keys
-		-- support tagstack C-t jump back
 		map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition", silent = true })
 
 		-- Show line diagnostics
-		map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+		map("n", "<leader>ld", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "[L]ine [Diag]", silent = true })
 
 		-- Show buffer diagnostics
-		map("n", "<leader>cb", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+		map("n", "<leader>bd", "<cmd>Lspsaga show_buf_diagnostics<CR>", { desc = "[B]uff [Diag]", silent = true })
 
 		-- Show workspace diagnostics
-		map("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+		map(
+			"n",
+			"<leader>wd",
+			"<cmd>Lspsaga show_workspace_diagnostics<CR>",
+			{ desc = "[W]orksp [Diag]", silent = true }
+		)
 
 		-- Diagnostic jump can use `<c-o>` to jump back
 		map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
@@ -76,7 +80,6 @@ return {
 
 		-- Outline
 		map("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { desc = "LSP Outline", silent = true })
-
 		-- Hover Doc
 		map("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 	end,
