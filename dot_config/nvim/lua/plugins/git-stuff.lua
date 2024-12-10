@@ -3,7 +3,7 @@ return {
 		"f-person/git-blame.nvim",
 		config = function()
 			require("gitblame").setup({
-				enabled = true,
+				enabled = false,
 				message_template = " <author> • <date> • <sha>",
 				message_when_not_committed = " Not Committed Yet",
 				highlight_group = "GitBlameInline",
