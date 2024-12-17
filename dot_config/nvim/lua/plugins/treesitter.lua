@@ -38,10 +38,10 @@ return {
 					enable = true,
 					lookahead = true,
 					keymaps = {
-						["a="] = { query = "@assignment.outer", desc = "Select outter part of an assignement" },
-						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignement" },
-						["l="] = { query = "@assignment.lhs", desc = "Select left hand part of an assignement" },
-						["r="] = { query = "@assignment.rhs", desc = "Select right hand part of an assignement" },
+						["a="] = { query = "@assignment.outer", desc = "Select outter part of an assignment" },
+						["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
+						["l="] = { query = "@assignment.lhs", desc = "Select left hand part of an assignment" },
+						["r="] = { query = "@assignment.rhs", desc = "Select right hand part of an assignment" },
 
 						["al"] = { query = "@loop.outer", desc = "Select outter part of an loop" },
 						["il"] = { query = "@loop.inner", desc = "Select inner part of an loop" },
