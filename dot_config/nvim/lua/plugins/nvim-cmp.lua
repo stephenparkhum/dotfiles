@@ -6,6 +6,8 @@ return {
 	},
 	{
 		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		version = "v2.*",
 		opts = {},
 		dependencies = {
 			"saadparwaiz1/cmp_luasnip",
@@ -54,7 +56,19 @@ return {
 						end
 					end, { "i", "s" }),
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							if lsnip.expandable() then
+								lsnip.expand()
+							else
+								cmp.confirm({
+									select = true,
+								})
+							end
+						else
+							fallback()
+						end
+					end),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
