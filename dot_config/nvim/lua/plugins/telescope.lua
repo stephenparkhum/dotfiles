@@ -78,6 +78,7 @@ return {
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("file_browser")
 		require("telescope").load_extension("scope")
+		require("telescope").load_extension("chezmoi")
 
 		local builtin = require("telescope.builtin")
 
@@ -100,6 +101,7 @@ return {
 		map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		map.set("n", "<leader>cb", "<cmd>Telescope buffers<CR>", { desc = "[C]urrent [B]uffers" })
+		map.set("n", "<leader>cz", require("telescope").extensions.chezmoi.find_files, {})
 
 		local mappings = {}
 		mappings.curr_buf = function()
