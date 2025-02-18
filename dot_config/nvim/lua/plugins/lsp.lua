@@ -51,31 +51,6 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.shopify_theme_ls.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.harper_ls.setup({
-				capabilities = capabilities,
-				settings = {
-					["harper-ls"] = {
-						linters = {
-							spell_check = true,
-							spelled_numbers = false,
-							sentence_capitalization = false,
-							long_sentences = true,
-							repeated_words = false,
-							spaces = true,
-							matcher = true,
-							correct_number_suffix = true,
-							number_suffix_capitalization = false,
-							multiple_sequential_pronouns = true,
-							linking_verbs = false,
-							avoid_curses = false,
-							terminating_conjunctions = false,
-						},
-					},
-				},
-			})
 
 			vim.diagnostic.config({
 				float = {
