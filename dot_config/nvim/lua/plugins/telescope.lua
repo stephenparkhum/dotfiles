@@ -87,7 +87,7 @@ return {
 		-- == TELESCOPE NAV == --
 		map.set("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
 		map.set("n", "<leader>td", "<cmd>Telescope diagnostics<CR>")
-		map.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
+		-- map.set("n", "<leader>bb", "<cmd>Telescope buffers<CR>")
 		-- map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>")
 		-- map.set("n", "<leader>fb", "<cmd>Telescope file_browser<CR>")
 		map.set("n", "<leader>cf", "<cmd>Telescope current_buffer_fuzzy_find sorting_strategy=ascending<CR>")
@@ -98,8 +98,8 @@ return {
 				end
 			end)
 		end)
-		map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
-		map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+		-- map.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+		-- map.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		map.set("n", "<leader>cb", "<cmd>Telescope buffers<CR>", { desc = "[C]urrent [B]uffers" })
 		map.set("n", "<leader>cz", require("telescope").extensions.chezmoi.find_files, {})
 
