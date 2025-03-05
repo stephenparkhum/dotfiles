@@ -13,21 +13,21 @@ return {
 		--
 		require("mini.ai").setup({ n_lines = 500 })
 		require("mini.surround").setup({})
-		local MiniStatusline = require("mini.statusline")
-		MiniStatusline.setup({
-			content = {
-				active = function()
-					local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
-					local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+		-- local MiniStatusline = require("mini.statusline")
+		-- MiniStatusline.setup({
+		-- 	content = {
+		-- 		active = function()
+		-- 			local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+		-- 			local filename = MiniStatusline.section_filename({ trunc_width = 140 })
 
-					return MiniStatusline.combine_groups({
-						{ hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
-						{ hl = "MiniStatuslineFilename", strings = { filename } },
-						{},
-						{},
-					})
-				end,
-			},
-		})
+		-- 			return MiniStatusline.combine_groups({
+		-- 				{ hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
+		-- 				{ hl = "MiniStatuslineFilename", strings = { filename } },
+		-- 				{},
+		-- 				{},
+		-- 			})
+		-- 		end,
+		-- 	},
+		-- })
 	end,
 }
