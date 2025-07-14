@@ -12,7 +12,7 @@ return {
 			-- Comment Example
 			vim.api.nvim_set_hl(0, "GitBlameInline", { fg = "#696969" })
 
-			vim.keymap.set("n", "<leader>gb", "<CMD>GitBlameToggle<CR>", { desc = "Toggle git blame" })
+			vim.keymap.set("n", "<leader>gbl", "<CMD>GitBlameToggle<CR>", { desc = "Toggle git blame" })
 			vim.keymap.set("n", "<leader>gof", "<CMD>GitBlameOpenFileURL<CR>", { desc = "Open file in GitHub" })
 			vim.keymap.set(
 				"n",
@@ -36,8 +36,6 @@ return {
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup()
-
-			vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 		end,
 	},
 }

@@ -17,7 +17,7 @@ map.set("n", "<leader>-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 map.set("n", "<leader>u", "<cmd>:UndoTreeToggle<CR>")
 
 -- == DEBUGGING == --
-map.set("n", "<leader>bp", ":lua require'dap'.toggle_breakpoint()")
+-- map.set("n", "<leader>bp", ":lua require'dap'.toggle_breakpoint()")
 
 -- == NVIM SMARTBUFS == --
 map.set("n", "<leader>1", ":lua require('nvim-smartbufs').goto_buffer(1)<CR>")
